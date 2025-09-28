@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codeAmani Solutions | High-End Dynamic Templates</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors and fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'charcoal': '#1C1C1E',
+                        'neon-cyan': '#00F0FF',
+                        'electric-blue': '#4060FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        'glow': {
+                            '0%, 100%': { 'text-shadow': '0 0 5px rgba(0, 240, 255, 0.5)' },
+                            '50%': { 'text-shadow': '0 0 15px rgba(0, 240, 255, 0.8), 0 0 25px rgba(0, 240, 255, 0.6)' },
+                        }
+                    },
+                    animation: {
+                        'text-glow': 'glow 3s ease-in-out infinite',
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        /* Base styling for a dark, high-contrast look */
+        body {
+            background-color: #0d0d0d;
+            font-family: 'Inter', sans-serif;
+            color: #E0E0E0;
+            line-height: 1.6;
+        }
+
+        /* Subtle 3D card effect for the templates */
+        .template-card {
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.25), 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        /* Custom gradient for the hero title */
+        .hero-gradient-text {
+            background-image: linear-gradient(90deg, #00F0FF 0%, #4060FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Utility class to detect if element is in viewport for dynamic loading */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Sticky Header Navigation -->
+    <header class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur-md shadow-lg border-b border-neon-cyan/20">
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo/Brand Name -->
+            <a href="#hero" class="text-3xl font-extrabold hero-gradient-text tracking-tight hover:opacity-80 transition">codeAmani</a>
+
+            <!-- Navigation Links -->
+            <div class="space-x-8 hidden md:flex">
+                <a href="#solutions" class="text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider">Solutions</a>
+                <a href="#templates" class="text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider">Templates</a>
+                <a href="#contact" class="text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider">Connect</a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-xl">
+                Explore The Future
+            </a>
+        </nav>
+    </header>
+
+    <main class="relative">
+        
+        <!-- 1. HERO SECTION - Breathtaking Introduction -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-center p-6 pt-24 overflow-hidden">
+            <!-- Background particle effect (simulated via CSS/Tailwind gradients) -->
+            <div class="absolute inset-0 bg-charcoal opacity-90"></div>
+            <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle at 50% 50%, #4060FF 0%, transparent 40%), radial-gradient(circle at 10% 90%, #00F0FF 0%, transparent 50%); background-size: cover;"></div>
+
+
+            <div class="max-w-5xl z-10 space-y-8 reveal-on-scroll">
+                <h1 class="text-6xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter leading-none animate-text-glow">
+                    <span class="hero-gradient-text">LUXURY</span> DIGITAL DESIGN
+                </h1>
+                <p class="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto font-light">
+                    codeAmani is the market leader in high-tech, dynamic templates for brands demanding **top-notch** digital presence and **solution-focused** architecture.
+                </p>
+                <div class="pt-6">
+                    <a href="#templates" class="inline-block bg-neon-cyan text-charcoal text-lg font-bold py-3 px-10 rounded-full transition duration-500 transform hover:scale-105 shadow-2xl shadow-neon-cyan/40">
+                        View Our Signature Collections
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SOLUTIONS SECTION - Focused on Top-Notch Technology & Results -->
+        <section id="solutions" class="py-24 bg-charcoal reveal-on-scroll">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-5xl font-extrabold text-center mb-4 hero-gradient-text">
+                    The codeAmani Advantage
+                </h2>
+                <p class="text-center text-lg text-white/70 mb-16 max-w-3xl mx-auto">
+                    We fuse **high-tech functionality** with **uncompromising aesthetics** to deliver immediate, measurable business results.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Feature 1: High Tech Architecture -->
+                    <div class="p-8 bg-gray-800 rounded-xl border border-neon-cyan/30 shadow-2xl reveal-on-scroll">
+                        <div class="text-4xl text-neon-cyan mb-4">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 17h18M5 17h14l-1.5 5H6.5L5 17zM12 4v12m0-12l3-3m-3 3L9 1"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">High Tech Architecture</h3>
+                        <p class="text-white/70">Built on modern, dynamic frameworks (like this one) ensuring blazing fast performance and SEO superiority. Purely optimized code.</p>
+                    </div>
+
+                    <!-- Feature 2: Luxury Aesthetics -->
+                    <div class="p-8 bg-gray-800 rounded-xl border border-neon-cyan/30 shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="text-4xl text-neon-cyan mb-4">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v5m0 0a2 2 0 100-4 2 2 0 000 4zm-7-9l2-2h10l2 2-7 7-7-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Luxury Aesthetics</h3>
+                        <p class="text-white/70">Every template is a masterpiece, using sophisticated palettes, premium typography, and captivating visual storytelling.</p>
+                    </div>
+
+                    <!-- Feature 3: Solution-Focused -->
+                    <div class="p-8 bg-gray-800 rounded-xl border border-neon-cyan/30 shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
+                        <div class="text-4xl text-neon-cyan mb-4">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white mb-3">Solution-Focused</h3>
+                        <p class="text-white/70">Templates are pre-optimized to convert, capture data, and streamline your brand's specific business objective from day one.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TEMPLATE SHOWCASE SECTION - Dynamic Preview -->
+        <section id="templates" class="py-24 bg-gray-900 reveal-on-scroll">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-5xl font-extrabold text-center mb-4 text-neon-cyan">
+                    The Collection
+                </h2>
+                <p class="text-center text-lg text-white/70 mb-16 max-w-3xl mx-auto">
+                    Preview a selection of our most dynamic and exclusive ready-to-use templates, built for market leaders.
+                </p>
+
+                <!-- Template Grid -->
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Template 1 -->
+                    <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll">
+                        <!-- Placeholder Image (Use a dark, modern look) -->
+                        <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
+                             style="background-image: url('https://placehold.co/800x400/1e293b/a5b4fc?text=Nebula+Portfolio'); background-size: cover; background-position: center;">
+                            <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">DYNAMIC, ANIMATED</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Nebula Portfolio</h3>
+                            <p class="text-white/60 mb-4">The ultimate dark-mode portfolio for high-value creative professionals.</p>
+                            <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
+                                View Details 
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Template 2 -->
+                    <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <!-- Placeholder Image -->
+                        <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
+                            style="background-image: url('https://placehold.co/800x400/374151/fcd34d?text=Apex+SaaS+Landing'); background-size: cover; background-position: center;">
+                            <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">HIGH-CONVERSION, BOLD</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Apex SaaS Landing</h3>
+                            <p class="text-white/60 mb-4">A bold, solution-focused landing page for enterprise software.</p>
+                            <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
+                                View Details 
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
+                        <!-- Placeholder Image -->
+                        <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
+                             style="background-image: url('https://placehold.co/800x400/0f172a/93c5fd?text=Quantum+E-Commerce'); background-size: cover; background-position: center;">
+                            <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">MINIMALIST, FLUID</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Quantum E-Commerce</h3>
+                            <p class="text-white/60 mb-4">Minimalist, lightning-fast design for luxury and exclusive retail brands.</p>
+                            <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
+                                View Details 
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main CTA for the template section -->
+                <div class="text-center mt-20 reveal-on-scroll" style="transition-delay: 0.6s;">
+                    <button onclick="console.log('Redirect to full template catalog')" class="inline-block bg-electric-blue text-white text-xl font-bold py-4 px-12 rounded-full transition duration-300 transform hover:scale-105 shadow-2xl shadow-electric-blue/50">
+                        See All 20+ Dynamic Templates
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. CONTACT/FOOTER SECTION -->
+        <section id="contact" class="py-16 bg-black reveal-on-scroll">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-4xl font-extrabold text-neon-cyan mb-4">
+                    Ready to Lead Your Market?
+                </h2>
+                <p class="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+                    Connect with our team to discuss custom, enterprise-grade solutions built on the **codeAmani** architecture.
+                </p>
+                
+                <form onsubmit="event.preventDefault(); alert('Thank you for connecting with codeAmani! We will be in touch shortly.')" class="max-w-lg mx-auto space-y-4">
+                    <input type="email" placeholder="Your Professional Email" required class="w-full p-4 bg-charcoal border border-neon-cyan/50 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition">
+                    <textarea placeholder="Your Vision and Project Scope" rows="3" required class="w-full p-4 bg-charcoal border border-neon-cyan/50 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition"></textarea>
+                    <button type="submit" class="w-full bg-neon-cyan text-charcoal text-lg font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-xl shadow-neon-cyan/30">
+                        Secure Your Digital Future
+                    </button>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Simple & Elegant -->
+    <footer class="bg-black border-t border-neon-cyan/10 py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center text-sm text-white/50">
+            <p>&copy; 2025 codeAmani Solutions. All Rights Reserved. | <span class="text-neon-cyan font-semibold">Luxury. Dynamic. Solution-Focused.</span></p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamic Reveal on Scroll Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Check if the element is currently visible in the viewport
+                if (entry.isIntersecting) {
+                    // Add the 'is-visible' class to trigger the CSS transition
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once it's revealed
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            // Options for the Intersection Observer
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        // Select all elements with the 'reveal-on-scroll' class
+        document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+
+        // IMPORTANT: Custom alert/notification function to replace window.alert()
+        function alert(message) {
+            const container = document.createElement('div');
+            container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-70';
+            container.innerHTML = `
+                <div class="bg-gray-900 p-8 rounded-xl max-w-sm mx-4 text-center border-2 border-neon-cyan shadow-neon-cyan/50 shadow-2xl transform scale-95 transition-all duration-300">
+                    <p class="text-xl font-semibold mb-4 text-white">${message}</p>
+                    <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan transition duration-300 text-sm" onclick="this.closest('.fixed').remove()">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(container);
+
+            // Animate in
+            setTimeout(() => {
+                 container.querySelector('div').classList.remove('scale-95');
+            }, 10);
+        }
+    </script>
+</body>
+</html>
