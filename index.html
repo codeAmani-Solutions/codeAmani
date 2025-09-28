@@ -174,7 +174,7 @@
 
                 <!-- Template Grid -->
                 <div class="grid md:grid-cols-3 gap-12">
-                    <!-- Template 1 -->
+                    <!-- Template 1: Nebula Portfolio (Unchanged) -->
                     <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll">
                         <!-- Placeholder Image (Use a dark, modern look) -->
                         <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
@@ -191,24 +191,25 @@
                         </div>
                     </div>
 
-                    <!-- Template 2 -->
+                    <!-- Template 2: SaaS Landing Blueprint (Linked to GitHub demo) -->
                     <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s;">
                         <!-- Placeholder Image -->
                         <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
-                            style="background-image: url('https://placehold.co/800x400/374151/fcd34d?text=Apex+SaaS+Landing'); background-size: cover; background-position: center;">
+                            style="background-image: url('https://placehold.co/800x400/374151/fcd34d?text=SaaS+Blueprint'); background-size: cover; background-position: center;">
                             <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">HIGH-CONVERSION, BOLD</span>
                         </div>
                         <div class="p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Apex SaaS Landing</h3>
-                            <p class="text-white/60 mb-4">A bold, solution-focused landing page for enterprise software.</p>
-                            <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
-                                View Details 
+                            <h3 class="text-2xl font-bold text-white mb-2">SaaS Landing Blueprint</h3>
+                            <p class="text-white/60 mb-4">The premium, highly optimized landing blueprint for enterprise software solutions.</p>
+                            <!-- Updated href to the user's provided link and added target="_blank" -->
+                            <a href="https://codeamani-solutions.github.io/saas-landing-blueprint/#benefits" target="_blank" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
+                                View Live Demo 
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Template 3 -->
+                    <!-- Template 3: Quantum E-Commerce (Unchanged) -->
                     <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
                         <!-- Placeholder Image -->
                         <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
@@ -236,7 +237,64 @@
             </div>
         </section>
 
-        <!-- 4. CONTACT/FOOTER SECTION -->
+        <!-- 4. TRUSTED CLIENTS SECTION - Interactive Showcase (UPDATED) -->
+        <section id="trusted" class="py-24 bg-charcoal reveal-on-scroll border-t border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl font-extrabold text-center mb-16 text-white">
+                    Trusted By Market Leaders
+                </h2>
+
+                <div class="flex flex-wrap justify-center items-center gap-12 sm:gap-16 lg:gap-20">
+                    <!-- Client 1 -->
+                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                        onclick="showClientProductDetails('Apex Corp', 'Developed the Enterprise Data Platform Blueprint, reducing data latency by 45%.', 'text-neon-cyan')">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-neon-cyan/50 group-hover:border-electric-blue transition-colors duration-300">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-neon-cyan transition-colors duration-300">A</span>
+                        </div>
+                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Apex Corp</p>
+                    </div>
+
+                    <!-- Client 2 -->
+                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                        onclick="showClientProductDetails('Zenith Retail', 'Implemented the Fluid E-commerce Checkout Flow, boosting conversion rates by 12%.', 'text-electric-blue')">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-electric-blue/50 group-hover:border-neon-cyan transition-colors duration-300">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-electric-blue transition-colors duration-300">Z</span>
+                        </div>
+                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Zenith Retail</p>
+                    </div>
+                    
+                    <!-- Client 3 -->
+                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                        onclick="showClientProductDetails('Vortex Finance', 'Designed the Secure Investment Dashboard, integrating real-time market data API connections.', 'text-green-400')">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-green-400/50 group-hover:border-green-400 transition-colors duration-300">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-green-400 transition-colors duration-300">V</span>
+                        </div>
+                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Vortex Finance</p>
+                    </div>
+                    
+                    <!-- Client 4 -->
+                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                        onclick="showClientProductDetails('Giga Media', 'Created the High-Speed Content Delivery System, improving page load times globally.', 'text-yellow-400')">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-yellow-400/50 group-hover:border-yellow-400 transition-colors duration-300">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-yellow-400 transition-colors duration-300">G</span>
+                        </div>
+                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Giga Media</p>
+                    </div>
+                    
+                    <!-- Client 5: T&T SERENITY CARE (NEW: Includes URL to open live demo) -->
+                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                        onclick="showClientProductDetails('T&T SERENITY CARE', 'Designed and deployed the premium Serenity Portal template, offering a high-touch, user-friendly booking and informational platform for premium care services.', 'text-pink-400', 'https://codeamani-solutions.github.io/serenity-preview/')">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-pink-400/50 group-hover:border-pink-400 transition-colors duration-300">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-pink-400 transition-colors duration-300">T</span>
+                        </div>
+                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">T&T Serenity Care</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CONTACT/FOOTER SECTION -->
         <section id="contact" class="py-16 bg-black reveal-on-scroll">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="text-4xl font-extrabold text-neon-cyan mb-4">
@@ -300,6 +358,7 @@
         });
 
         // IMPORTANT: Custom alert/notification function to replace window.alert()
+        // This is used for simple messages like form success.
         function alert(message) {
             const container = document.createElement('div');
             container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-70';
@@ -309,6 +368,39 @@
                     <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan transition duration-300 text-sm" onclick="this.closest('.fixed').remove()">
                         Close
                     </button>
+                </div>
+            `;
+            document.body.appendChild(container);
+
+            // Animate in
+            setTimeout(() => {
+                 container.querySelector('div').classList.remove('scale-95');
+            }, 10);
+        }
+
+        // Function to display detailed client product information in a custom modal (UPDATED to accept link)
+        function showClientProductDetails(clientName, productDescription, colorClass, link = null) {
+            const container = document.createElement('div');
+            container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm';
+            
+            // Generate the Live Demo button HTML only if a link is provided
+            const liveDemoButton = link ? `
+                <a href="${link}" target="_blank" class="live-demo-btn bg-neon-cyan text-charcoal py-2 px-6 rounded-full font-bold hover:bg-electric-blue hover:text-white transition duration-300 text-sm mt-4 inline-flex items-center space-x-2">
+                    <span>View Live Serenity Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-2h6m0 0l-3-3m3 3l-3 3"></path></svg>
+                </a>
+            ` : '';
+
+            container.innerHTML = `
+                <div class="bg-gray-900 p-8 sm:p-12 rounded-xl max-w-lg mx-4 text-left border-2 border-neon-cyan/50 shadow-neon-cyan/50 shadow-2xl transform scale-95 transition-all duration-300 space-y-4">
+                    <h3 class="text-2xl font-extrabold text-white border-b border-electric-blue/50 pb-2">Client Solution: <span class="${colorClass}">${clientName}</span></h3>
+                    <p class="text-lg text-white/80">${productDescription}</p>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-6 pt-4 border-t border-white/10">
+                        ${liveDemoButton}
+                        <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan hover:text-charcoal transition duration-300 text-sm mt-4 sm:mt-0" onclick="this.closest('.fixed').remove()">
+                            Close
+                        </button>
+                    </div>
                 </div>
             `;
             document.body.appendChild(container);
