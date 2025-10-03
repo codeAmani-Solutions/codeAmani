@@ -7,7 +7,7 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configure Tailwind for custom colors and fonts -->
-    <script> 
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -76,7 +76,7 @@
         /* ------------------------------------------------------------------ */
         .kenburns-background {
             /* UPDATED: Path to the desert image */
-            background-image: url('assets/heavenly_background.png');
+            background-image: url('assets/desert_background.png');
             background-size: cover;
             background-position: center center;
             animation: kenburns 30s ease-in-out infinite alternate;
@@ -84,25 +84,27 @@
 
 
         /* ------------------------------------------------------------------ */
-        /* GLASSMORHPISM EFFECT DEFINITION */
+        /* GLASSMORHPISM EFFECT DEFINITION (MORE TRANSPARENT) */
         /* ------------------------------------------------------------------ */
         .glass-container {
-            /* Translucent dark background */
-            background: rgba(40, 40, 42, 0.4); 
+            /* Translucent dark background (More transparent) */
+            background: rgba(40, 40, 42, 0.3); 
             /* The core blur effect */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px); 
-            /* Subtle neon border and strong shadow */
-            border: 1px solid rgba(0, 240, 255, 0.15); 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            /* Subtle neon border (less cyan, more neutral) */
+            border: 1px solid rgba(170, 190, 255, 0.1); 
+            /* Toned down shadow */
+            box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.4);
         }
         
-        /* A slightly lighter inner container for grouping content */
+        /* A slightly lighter inner container for grouping content (More transparent) */
         .inner-glass-container {
-            background: rgba(28, 28, 30, 0.5); 
+            background: rgba(28, 28, 30, 0.4); 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            /* Subtly dimmer border */
+            border: 1px solid rgba(170, 190, 255, 0.15);
         }
 
 
@@ -112,16 +114,16 @@
             transform-style: preserve-3d;
             perspective: 1000px;
             /* Glass background for cards */
-            background: rgba(28, 28, 30, 0.5); 
+            background: rgba(28, 28, 30, 0.4); 
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(170, 190, 255, 0.1);
         }
 
         .template-card:hover {
             transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
-            /* Enhanced glow on hover */
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.25), 0 0 10px rgba(0, 240, 255, 0.7); 
+            /* Maintained a subtle glow on hover */
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2), 0 0 5px rgba(0, 240, 255, 0.5); 
         }
         
         /* Custom gradient for the hero title */
@@ -215,7 +217,7 @@
         .catalog-card:hover {
             transform: scale(1.08); /* Pop effect */
             z-index: 10;
-            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.5);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.3); /* Subtly reduced glow */
             border-color: #00F0FF;
         }
 
@@ -229,7 +231,7 @@
         /* Pricing Card Overrides to blend with Glassmorphism */
         .card { 
             backdrop-filter: blur(8px); 
-            background: rgba(28, 28, 30, 0.5); 
+            background: rgba(28, 28, 30, 0.4); /* More transparent */
             border: 1px solid rgba(255,255,255,0.08); /* White border for definition */
             color: #E0E0E0; /* Light text */
         }
@@ -252,16 +254,16 @@
 
         .trusted-client-logo:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 25px 5px rgba(0, 240, 255, 0.6); /* Neon glow on hover */
+            box-shadow: 0 0 25px 5px rgba(0, 240, 255, 0.4); /* Reduced glow */
             border-color: #00F0FF;
         }
         
         /* NEW Counter styling for the Hero Section */
         .counter-box {
-            background: rgba(40, 40, 42, 0.6);
+            background: rgba(40, 40, 42, 0.4); /* More transparent */
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            border: 1px solid rgba(170, 190, 255, 0.15); /* Subtly dimmed border */
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); /* Subtly dimmed shadow */
             padding: 1rem 2rem;
         }
 
