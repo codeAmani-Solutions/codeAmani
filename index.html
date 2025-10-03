@@ -41,20 +41,61 @@
             line-height: 1.6;
         }
 
-        /* Subtle 3D card effect for the templates */
+        /* ------------------------------------------------------------------ */
+        /* GLASSMORHPISM EFFECT DEFINITION */
+        /* ------------------------------------------------------------------ */
+        .glass-container {
+            /* Translucent dark background */
+            background: rgba(40, 40, 42, 0.4); 
+            /* The core blur effect */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); 
+            /* Subtle neon border and strong shadow */
+            border: 1px solid rgba(0, 240, 255, 0.15); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        /* A slightly lighter inner container for grouping content */
+        .inner-glass-container {
+            background: rgba(28, 28, 30, 0.5); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+
+        /* Update template card styles to incorporate glass effect */
         .template-card {
             transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
             transform-style: preserve-3d;
             perspective: 1000px;
+            /* Glass background for cards */
+            background: rgba(28, 28, 30, 0.5); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 240, 255, 0.1);
         }
 
         .template-card:hover {
             transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.25), 0 0 10px rgba(0, 240, 255, 0.5);
+            /* Enhanced glow on hover */
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.25), 0 0 10px rgba(0, 240, 255, 0.7); 
         }
         
         /* Custom gradient for the hero title */
         .hero-gradient-text {
+            background-image: linear-gradient(90deg, #00F0FF 0%, #4060FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* NEW: Subtle glow for highlighted text keywords */
+        .dynamic-text-glow {
+            color: #E0E0E0; /* Ensure text is visible */
+            text-shadow: 0 0 3px rgba(0, 240, 255, 0.5);
+            font-weight: 700; /* Bold for emphasis */
             background-image: linear-gradient(90deg, #00F0FF 0%, #4060FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -73,265 +114,816 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Image styling for Template Cards */
+        .template-image {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center; 
+        }
+
+        /* Screen Glare Effect */
+        .glare-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.0) 100%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Enhance glare on hover */
+        .template-card:hover .glare-overlay {
+             opacity: 0.15;
+        }
+
+        /* ------------------------------------------------------------------ */
+        /* NETFLIX-STYLE CATALOG SPECIFIC STYLES */
+        /* ------------------------------------------------------------------ */
+        .catalog-row-title {
+            padding-left: 24px; /* Matches px-6 padding in Tailwind */
+        }
+
+        .catalog-container {
+            overflow-x: scroll;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        .catalog-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .catalog-card {
+            width: 300px; /* Standard Netflix card width */
+            min-width: 300px;
+            height: 180px; /* Standard Netflix aspect ratio approx */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalog-card:hover {
+            transform: scale(1.08); /* Pop effect */
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.5);
+            border-color: #00F0FF;
+        }
+
+        .catalog-card-image {
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Sticky Header Navigation -->
-    <header class="sticky top-0 z-50 bg-charcoal/95 backdrop-blur-md shadow-lg border-b border-neon-cyan/20">
+    <!-- Sticky Header Navigation (Now Glassmorphism) -->
+    <header class="sticky top-0 z-50 glass-container shadow-2xl">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo/Brand Name -->
-            <a href="#hero" class="text-3xl font-extrabold hero-gradient-text tracking-tight hover:opacity-80 transition">codeAmani</a>
-
-            <!-- Navigation Links -->
-            <div class="space-x-8 hidden md:flex">
-                <a href="#solutions" class="text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider">Solutions</a>
-                <a href="#templates" class="text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider">Templates</a>
-                <a href="#contact" class="text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider">Connect</a>
+            <!-- Logo/Brand Name (Wrapped in inner-glass-container) -->
+            <div class="inner-glass-container rounded-lg p-2 px-4 transition duration-300 hover:border-neon-cyan">
+                <a href="#hero" class="text-3xl font-extrabold hero-gradient-text tracking-tight hover:opacity-80 transition" onclick="showSection('main-content')">codeAmani</a>
             </div>
 
-            <!-- CTA Button -->
-            <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-xl">
+            <!-- Desktop Navigation Links -->
+            <div class="space-x-4 hidden md:flex">
+                <!-- Solutions -> Digital Architecture -->
+                <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
+                    <a href="#digital-architecture" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('main-content')">Services</a>
+                </div>
+                <!-- Templates -->
+                <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
+                    <a href="#templates" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('main-content')">Templates</a>
+                </div>
+                <!-- Connect -->
+                <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
+                    <a href="#contact" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('main-content')">Connect</a>
+                </div>
+            </div>
+
+            <!-- Desktop CTA Button -->
+            <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-xl hidden md:block" onclick="showSection('main-content')">
                 Explore The Future
             </a>
+            
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-white inner-glass-container rounded-lg p-2" onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
+        
+        <!-- Mobile Menu (Vertical, Hidden by default) -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full glass-container border-t border-neon-cyan/10 md:hidden">
+            <div class="flex flex-col p-4 space-y-2">
+                <!-- Mobile Navigation Links (Using inner-glass-container for each link) -->
+                <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
+                    <a href="#digital-architecture" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Services</a>
+                </div>
+                <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
+                    <a href="#templates" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Templates</a>
+                </div>
+                <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
+                    <a href="#contact" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Connect</a>
+                </div>
+                
+                <!-- Mobile CTA -->
+                <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-3 px-4 rounded-lg transition duration-300 shadow-xl text-center mt-2" onclick="showSection('main-content'); toggleMobileMenu();">
+                    Explore The Future
+                </a>
+            </div>
+        </div>
     </header>
 
     <main class="relative">
+
+        <!-- Main Single Page Content Wrapper -->
+        <div id="main-content" class="block">
         
-        <!-- 1. HERO SECTION - Breathtaking Introduction -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center text-center p-6 pt-24 overflow-hidden">
-            <!-- Background particle effect (simulated via CSS/Tailwind gradients) -->
-            <div class="absolute inset-0 bg-charcoal opacity-90"></div>
-            <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle at 50% 50%, #4060FF 0%, transparent 40%), radial-gradient(circle at 10% 90%, #00F0FF 0%, transparent 50%); background-size: cover;"></div>
+            <!-- 1. HERO SECTION - Breathtaking Introduction -->
+            <section id="hero" class="relative min-h-screen flex items-center justify-center text-center p-6 pt-24 overflow-hidden">
+                <!-- Background particle effect (simulated via CSS/Tailwind gradients) -->
+                <div class="absolute inset-0 bg-charcoal opacity-90"></div>
+                <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle at 50% 50%, #4060FF 0%, transparent 40%), radial-gradient(circle at 10% 90%, #00F0FF 0%, transparent 50%); background-size: cover;"></div>
 
 
-            <div class="max-w-5xl z-10 space-y-8 reveal-on-scroll">
-                <h1 class="text-6xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter leading-none animate-text-glow">
-                    <span class="hero-gradient-text">LUXURY</span> DIGITAL DESIGN
-                </h1>
-                <p class="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto font-light">
-                    codeAmani is the market leader in high-tech, dynamic templates for brands demanding **top-notch** digital presence and **solution-focused** architecture.
-                </p>
-                <div class="pt-6">
-                    <a href="#templates" class="inline-block bg-neon-cyan text-charcoal text-lg font-bold py-3 px-10 rounded-full transition duration-500 transform hover:scale-105 shadow-2xl shadow-neon-cyan/40">
-                        View Our Signature Collections
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. SOLUTIONS SECTION - Focused on Top-Notch Technology & Results -->
-        <section id="solutions" class="py-24 bg-charcoal reveal-on-scroll">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-5xl font-extrabold text-center mb-4 hero-gradient-text">
-                    The codeAmani Advantage
-                </h2>
-                <p class="text-center text-lg text-white/70 mb-16 max-w-3xl mx-auto">
-                    We fuse **high-tech functionality** with **uncompromising aesthetics** to deliver immediate, measurable business results.
-                </p>
-
-                <div class="grid md:grid-cols-3 gap-10">
-                    <!-- Feature 1: High Tech Architecture -->
-                    <div class="p-8 bg-gray-800 rounded-xl border border-neon-cyan/30 shadow-2xl reveal-on-scroll">
-                        <div class="text-4xl text-neon-cyan mb-4">
-                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 17h18M5 17h14l-1.5 5H6.5L5 17zM12 4v12m0-12l3-3m-3 3L9 1"></path></svg>
+                <div class="max-w-5xl z-10 space-y-8 reveal-on-scroll glass-container rounded-xl p-8 sm:p-12">
+                    
+                    <!-- Wrapper for Title and Text Area -->
+                    <div class="space-y-4">
+                        <!-- Title Wrapper (Existing Inner Glass Container) -->
+                        <div class="inner-glass-container rounded-lg p-6 sm:p-8">
+                            <h1 class="text-6xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter leading-none animate-text-glow">
+                                <span class="hero-gradient-text">LUXURY</span> DIGITAL DESIGN
+                            </h1>
                         </div>
-                        <h3 class="text-2xl font-semibold text-white mb-3">High Tech Architecture</h3>
-                        <p class="text-white/70">Built on modern, dynamic frameworks (like this one) ensuring blazing fast performance and SEO superiority. Purely optimized code.</p>
+                        
+                        <!-- Text Area Wrapper (NEW Inner Glass Container) -->
+                        <div class="inner-glass-container rounded-lg p-6 sm:p-8">
+                            <p class="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto font-light mt-4">
+                                codeAmani is the market leader in high-tech, dynamic templates for brands demanding <span class="dynamic-text-glow">top-notch</span> digital presence and <span class="dynamic-text-glow">solution-focused</span> architecture.
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Feature 2: Luxury Aesthetics -->
-                    <div class="p-8 bg-gray-800 rounded-xl border border-neon-cyan/30 shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s;">
-                        <div class="text-4xl text-neon-cyan mb-4">
-                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v5m0 0a2 2 0 100-4 2 2 0 000 4zm-7-9l2-2h10l2 2-7 7-7-7z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-white mb-3">Luxury Aesthetics</h3>
-                        <p class="text-white/70">Every template is a masterpiece, using sophisticated palettes, premium typography, and captivating visual storytelling.</p>
-                    </div>
-
-                    <!-- Feature 3: Solution-Focused -->
-                    <div class="p-8 bg-gray-800 rounded-xl border border-neon-cyan/30 shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
-                        <div class="text-4xl text-neon-cyan mb-4">
-                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-white mb-3">Solution-Focused</h3>
-                        <p class="text-white/70">Templates are pre-optimized to convert, capture data, and streamline your brand's specific business objective from day one.</p>
+                    <div class="pt-6">
+                        <a href="#digital-architecture" class="inline-block bg-neon-cyan text-charcoal text-lg font-bold py-3 px-10 rounded-full transition duration-500 transform hover:scale-105 shadow-2xl shadow-neon-cyan/40" onclick="showSection('main-content')">
+                            View Our Signature Solutions
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 3. TEMPLATE SHOWCASE SECTION - Dynamic Preview -->
-        <section id="templates" class="py-24 bg-gray-900 reveal-on-scroll">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-5xl font-extrabold text-center mb-4 text-neon-cyan">
-                    The Collection
-                </h2>
-                <p class="text-center text-lg text-white/70 mb-16 max-w-3xl mx-auto">
-                    Preview a selection of our most dynamic and exclusive ready-to-use templates, built for market leaders.
-                </p>
-
-                <!-- Template Grid -->
-                <div class="grid md:grid-cols-3 gap-12">
-                    <!-- Template 1: Nebula Portfolio (Unchanged) -->
-                    <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll">
-                        <!-- Placeholder Image (Use a dark, modern look) -->
-                        <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
-                             style="background-image: url('https://placehold.co/800x400/1e293b/a5b4fc?text=Nebula+Portfolio'); background-size: cover; background-position: center;">
-                            <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">DYNAMIC, ANIMATED</span>
+            <!-- 2. DIGITAL ARCHITECTURE (New Solutions Section) - Focused on Full-Service Partnership -->
+            <section id="digital-architecture" class="py-16 sm:py-24 bg-charcoal reveal-on-scroll">
+                <div class="max-w-7xl mx-auto px-6">
+                    
+                    <!-- Title Block -->
+                    <div class="glass-container rounded-xl p-4 sm:p-8 mb-10 sm:mb-16 max-w-5xl mx-auto space-y-4">
+                        <!-- Wrapper for Section Title -->
+                        <div class="inner-glass-container rounded-lg p-4 sm:p-8">
+                            <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 hero-gradient-text">
+                                Complete Digital Architecture
+                            </h2>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Nebula Portfolio</h3>
-                            <p class="text-white/60 mb-4">The ultimate dark-mode portfolio for high-value creative professionals.</p>
-                            <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
-                                View Details 
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
+
+                        <!-- Wrapper for Subtitle -->
+                        <div class="inner-glass-container rounded-lg p-4 sm:p-8 max-w-3xl mx-auto">
+                            <p class="text-center text-base sm:text-lg text-white/70">
+                                We fuse <span class="dynamic-text-glow">high-tech functionality</span> with <span class="dynamic-text-glow">uncompromising aesthetics</span> to deliver immediate, measurable business results.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- End Title Block -->
+
+
+                    <div class="grid md:grid-cols-3 gap-6 sm:gap-10">
+                        
+                        <!-- Service Pillar 1: AI & AUTOMATION -->
+                        <div class="cursor-pointer group glass-container rounded-xl shadow-2xl reveal-on-scroll p-4 space-y-4 hover:border-red-500 transition duration-300"
+                            onclick="showServiceTiers('AI & Automation', [
+                                'AI-Powered ROI Optimization', 
+                                'Real-Time Metrics & Analytics', 
+                                'AI Chatbot Integration', 
+                                'Automation Workflow Deployment'
+                            ], 'text-red-500', 'bg-red-500')">
+                            <!-- Inner Container 1: Icon + Title -->
+                            <div class="inner-glass-container rounded-lg p-4">
+                                <div class="text-4xl text-red-500 mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-semibold text-white">AI & Automation</h3>
+                            </div>
+                            
+                            <!-- Inner Container 2: Text Area -->
+                            <div class="inner-glass-container rounded-lg p-4">
+                                <p class="text-sm sm:text-base text-white/70">Capitalize your ROI, streamline operations, and gain deep, immediate intelligence using cutting-edge AI.</p>
+                            </div>
+                        </div>
+
+                        <!-- Service Pillar 2: BRAND & CAMPAIGNS -->
+                        <div class="cursor-pointer group glass-container rounded-xl shadow-2xl reveal-on-scroll p-4 space-y-4 hover:border-yellow-500 transition duration-300"
+                            style="transition-delay: 0.2s;"
+                            onclick="showServiceTiers('Brand & Campaigns', [
+                                'Full-Cycle Ad Campaign Management', 
+                                'Social Media Account Strategy & Growth', 
+                                'Premium Content Creation', 
+                                'Business Consulting & Strategy'
+                            ], 'text-yellow-500', 'bg-yellow-500')">
+                            <!-- Inner Container 1: Icon + Title -->
+                            <div class="inner-glass-container rounded-lg p-4">
+                                <div class="text-4xl text-yellow-500 mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v5m0 0a2 2 0 100-4 2 2 0 000 4zm-7-9l2-2h10l2 2-7 7-7-7z"></path></svg>
+                            </div>
+                                <h3 class="text-xl sm:text-2xl font-semibold text-white">Brand & Campaigns</h3>
+                            </div>
+
+                            <!-- Inner Container 2: Text Area -->
+                            <div class="inner-glass-container rounded-lg p-4">
+                                <p class="text-sm sm:text-base text-white/70">Elevate your brand presence, manage your reputation, and scale your reach with high-impact ad and social campaigns.</p>
+                            </div>
+                        </div>
+
+                        <!-- Service Pillar 3: FOUNDATION & GROWTH -->
+                        <div class="cursor-pointer group glass-container rounded-xl shadow-2xl reveal-on-scroll p-4 space-y-4 hover:border-green-500 transition duration-300" 
+                            style="transition-delay: 0.4s;"
+                            onclick="showServiceTiers('Foundation & Growth', [
+                                'High-End Site Design & Development', 
+                                'Advanced SEO for Top Google Rank', 
+                                'Secure Hosting & Maintenance', 
+                                'Review Plugin Integration'
+                            ], 'text-green-500', 'bg-green-500')">
+                            <!-- Inner Container 1: Icon + Title -->
+                            <div class="inner-glass-container rounded-lg p-4">
+                                <div class="text-4xl text-green-500 mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 17h18M5 17h14l-1.5 5H6.5L5 17zM12 4v12m0-12l3-3m-3 3L9 1"></path></svg>
+                                </div>
+                                <h3 class="text-xl sm:text-2xl font-semibold text-white">Foundation & Growth</h3>
+                            </div>
+
+                            <!-- Inner Container 2: Text Area -->
+                            <div class="inner-glass-container rounded-lg p-4">
+                                <p class="text-sm sm:text-base text-white/70">From dynamic site creation to achieving top Google rankings, we build the robust digital infrastructure your business needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-16 sm:mt-20 reveal-on-scroll" style="transition-delay: 0.6s;">
+                        <button onclick="showServiceTiers('AI & Automation', serviceTiers['AI & Automation'].features, 'text-red-500', 'bg-red-500')" class="inline-block bg-electric-blue text-white text-base sm:text-xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full transition duration-300 transform hover:scale-105 shadow-2xl shadow-electric-blue/50">
+                            View Monthly Subscription Tiers
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+            
+            <!-- 3. TEMPLATE SHOWCASE SECTION - Dynamic Preview -->
+            <section id="templates" class="py-16 sm:py-24 bg-gray-900 reveal-on-scroll">
+                <div class="max-w-7xl mx-auto px-6">
+                    <!-- NEW OUTER GLASS CONTAINER for Title/Subtitle block -->
+                    <div class="glass-container rounded-xl p-4 sm:p-8 mb-10 sm:mb-16 max-w-5xl mx-auto space-y-4">
+                        
+                        <!-- Wrapper for Section Title (Existing Inner Glass Container) -->
+                        <div class="inner-glass-container rounded-lg p-4 sm:p-8">
+                            <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-neon-cyan">
+                                The Collection
+                            </h2>
+                        </div>
+                        
+                        <!-- Wrapper for Subtitle (Existing Inner Glass Container) -->
+                        <div class="inner-glass-container rounded-lg p-4 sm:p-8 max-w-3xl mx-auto">
+                            <p class="text-center text-base sm:text-lg text-white/70">
+                                Preview a selection of our most dynamic and exclusive ready-to-use templates, built for market leaders.
+                            </p>
+                        </div>
+
+                    </div>
+                    <!-- END NEW OUTER GLASS CONTAINER -->
+
+                    <!-- Template Grid -->
+                    <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
+                        <!-- Template 1: Nebula Portfolio (Glass) - ENHANCED VISUALS -->
+                        <div class="template-card rounded-xl overflow-hidden shadow-2xl reveal-on-scroll">
+                            <!-- ENHANCED IMAGE/VISUAL SECTION -->
+                            <div class="template-image h-56 sm:h-64 flex flex-col justify-end p-4 sm:p-6 rounded-t-xl" 
+                                 style="background: linear-gradient(135deg, #1A1A2E 0%, #151525 50%, #0D0D15 100%); border-bottom: 2px solid #00F0FF; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);">
+                                <div class="glare-overlay"></div>
+                                <h3 class="text-3xl sm:text-4xl font-extrabold text-white text-left mb-2 tracking-tighter" style="text-shadow: 0 0 5px rgba(255,255,255,0.3);">
+                                    Nebula Portfolio
+                                </h3>
+                                <span class="text-neon-cyan text-xs font-mono bg-black/60 backdrop-blur-sm px-2 py-1 rounded-sm w-fit">DYNAMIC, ANIMATED</span>
+                            </div>
+                            <!-- TEXT SECTION WITH GLASS WRAPPER -->
+                            <div class="inner-glass-container p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Nebula Portfolio</h3>
+                                <p class="text-white/60 mb-4 text-sm sm:text-base">The ultimate dark-mode portfolio for high-value creative professionals.</p>
+                                <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition text-sm">
+                                    View Details 
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Template 2: SaaS Landing Blueprint (Glass) - ENHANCED VISUALS -->
+                        <div class="template-card rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s;">
+                            <!-- ENHANCED IMAGE/VISUAL SECTION -->
+                            <div class="template-image h-56 sm:h-64 flex flex-col justify-end p-4 sm:p-6 rounded-t-xl" 
+                                style="background: linear-gradient(135deg, #120935 0%, #08031A 50%, #03010D 100%); border-bottom: 2px solid #4060FF; box-shadow: 0 0 20px rgba(64, 96, 255, 0.3);">
+                                <div class="glare-overlay"></div>
+                                <h3 class="text-3xl sm:text-4xl font-extrabold text-white text-left mb-2 tracking-tighter" style="text-shadow: 0 0 5px rgba(255,255,255,0.3);">
+                                    SaaS Blueprint
+                                </h3>
+                                <span class="text-electric-blue text-xs font-mono bg-black/60 backdrop-blur-sm px-2 py-1 rounded-sm w-fit">HIGH-CONVERSION, BOLD</span>
+                            </div>
+                            <!-- TEXT SECTION WITH GLASS WRAPPER -->
+                            <div class="inner-glass-container p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">SaaS Landing Blueprint</h3>
+                                <p class="text-white/60 mb-4 text-sm sm:text-base">The premium, highly optimized landing blueprint for enterprise software solutions.</p>
+                                <a href="https://codeamani-solutions.github.io/saas-landing-blueprint/#benefits" target="_blank" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition text-sm">
+                                    View Live Demo 
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Template 3: Quantum E-Commerce (Glass) - ENHANCED VISUALS -->
+                        <div class="template-card rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
+                            <!-- ENHANCED IMAGE/VISUAL SECTION -->
+                            <div class="template-image h-56 sm:h-64 flex flex-col justify-end p-4 sm:p-6 rounded-t-xl" 
+                                 style="background: linear-gradient(135deg, #2A0E0E 0%, #150808 50%, #0A0404 100%); border-bottom: 2px solid #FF6B6B; box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);">
+                                <div class="glare-overlay"></div>
+                                <h3 class="text-3xl sm:text-4xl font-extrabold text-white text-left mb-2 tracking-tighter" style="text-shadow: 0 0 5px rgba(255,255,255,0.3);">
+                                    Quantum E-Commerce
+                                </h3>
+                                <span class="text-pink-400 text-xs font-mono bg-black/60 backdrop-blur-sm px-2 py-1 rounded-sm w-fit">MINIMALIST, FLUID</span>
+                            </div>
+                            <!-- TEXT SECTION WITH GLASS WRAPPER -->
+                            <div class="inner-glass-container p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Quantum E-Commerce</h3>
+                                <p class="text-white/60 mb-4 text-sm sm:text-base">Minimalist, lightning-fast design for luxury and exclusive retail brands.</p>
+                                <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition text-sm">
+                                    View Details 
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Template 2: SaaS Landing Blueprint (Linked to GitHub demo) -->
-                    <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.2s;">
-                        <!-- Placeholder Image -->
-                        <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
-                            style="background-image: url('https://placehold.co/800x400/374151/fcd34d?text=SaaS+Blueprint'); background-size: cover; background-position: center;">
-                            <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">HIGH-CONVERSION, BOLD</span>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">SaaS Landing Blueprint</h3>
-                            <p class="text-white/60 mb-4">The premium, highly optimized landing blueprint for enterprise software solutions.</p>
-                            <!-- Updated href to the user's provided link and added target="_blank" -->
-                            <a href="https://codeamani-solutions.github.io/saas-landing-blueprint/#benefits" target="_blank" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
-                                View Live Demo 
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
-                        </div>
+                    <!-- Main CTA for the template section (UPDATED onClick) -->
+                    <div class="text-center mt-16 sm:mt-20 reveal-on-scroll" style="transition-delay: 0.6s;">
+                        <button onclick="showSection('template-catalog')" class="inline-block bg-electric-blue text-white text-base sm:text-xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full transition duration-300 transform hover:scale-105 shadow-2xl shadow-electric-blue/50">
+                            See All 20+ Dynamic Templates
+                        </button>
                     </div>
 
-                    <!-- Template 3: Quantum E-Commerce (Unchanged) -->
-                    <div class="template-card bg-charcoal rounded-xl overflow-hidden shadow-2xl reveal-on-scroll" style="transition-delay: 0.4s;">
-                        <!-- Placeholder Image -->
-                        <div class="p-8 bg-gray-800 rounded-t-xl h-64 flex flex-col justify-end" 
-                             style="background-image: url('https://placehold.co/800x400/0f172a/93c5fd?text=Quantum+E-Commerce'); background-size: cover; background-position: center;">
-                            <span class="text-white text-xs font-mono bg-black/50 p-1 rounded-sm">MINIMALIST, FLUID</span>
+                </div>
+            </section>
+
+            <!-- 4. TRUSTED CLIENTS SECTION - Interactive Showcase -->
+            <section id="trusted" class="py-16 sm:py-24 bg-charcoal reveal-on-scroll border-t border-b border-white/5">
+                <div class="max-w-7xl mx-auto px-6">
+                     <!-- Wrapper for Section Title -->
+                    <div class="inner-glass-container rounded-lg p-4 sm:p-8 mb-10 sm:mb-16 max-w-5xl mx-auto">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-white">
+                            Trusted By Market Leaders
+                        </h2>
+                    </div>
+
+
+                    <div class="flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-20">
+                        <!-- Client 1 (Glass) -->
+                        <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                            onclick="showClientProductDetails('Apex Corp', 'Developed the Enterprise Data Platform Blueprint, reducing data latency by 45%.', 'text-neon-cyan')">
+                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-electric-blue transition-colors duration-300">
+                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-neon-cyan transition-colors duration-300">A</span>
+                            </div>
+                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Apex Corp</p>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Quantum E-Commerce</h3>
-                            <p class="text-white/60 mb-4">Minimalist, lightning-fast design for luxury and exclusive retail brands.</p>
-                            <a href="#" class="text-neon-cyan hover:text-electric-blue font-semibold flex items-center transition">
-                                View Details 
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
+
+                        <!-- Client 2 (Glass) -->
+                        <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                            onclick="showClientProductDetails('Zenith Retail', 'Implemented the Fluid E-commerce Checkout Flow, boosting conversion rates by 12%.', 'text-electric-blue')">
+                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-neon-cyan transition-colors duration-300">
+                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-electric-blue transition-colors duration-300">Z</span>
+                            </div>
+                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Zenith Retail</p>
                         </div>
+                        
+                        <!-- Client 3 (Glass) -->
+                        <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                            onclick="showClientProductDetails('Vortex Finance', 'Designed the Secure Investment Dashboard, integrating real-time market data API connections.', 'text-green-400')">
+                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-green-400 transition-colors duration-300">
+                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-green-400 transition-colors duration-300">V</span>
+                            </div>
+                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Vortex Finance</p>
+                        </div>
+                        
+                        <!-- Client 4 (Glass) -->
+                        <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                            onclick="showClientProductDetails('Giga Media', 'Created the High-Speed Content Delivery System, improving page load times globally.', 'text-yellow-400')">
+                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-yellow-400 transition-colors duration-300">
+                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-yellow-400 transition-colors duration-300">G</span>
+                            </div>
+                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Giga Media</p>
+                        </div>
+                        
+                        <!-- Client 5: T&T SERENITY CARE (Glass) -->
+                        <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                            onclick="showClientProductDetails('T&T SERENITY CARE', 'Designed and deployed the premium Serenity Portal template, offering a high-touch, user-friendly booking and informational platform for premium care services.', 'text-pink-400', 'https://codeamani-solutions.github.io/serenity-preview/')">
+                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-pink-400 transition-colors duration-300">
+                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-pink-400 transition-colors duration-300">T</span>
+                            </div>
+                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">T&T Serenity Care</p>
+                        </div>
+
+                        <!-- Client 6: Pixel Prodigy (Glass) -->
+                        <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
+                            onclick="showClientProductDetails('Pixel Prodigy', 'Crafted a bespoke, dynamic landing experience for their new flagship design software, focusing on breathtaking visual fidelity and load speed.', 'text-purple-400', 'https://codeamani-solutions.github.io/pixelprodigy/')">
+                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-purple-400 transition-colors duration-300">
+                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-purple-400 transition-colors duration-300">P</span>
+                            </div>
+                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Pixel Prodigy</p>
+                        </div>
+                        
                     </div>
                 </div>
+            </section>
 
-                <!-- Main CTA for the template section -->
-                <div class="text-center mt-20 reveal-on-scroll" style="transition-delay: 0.6s;">
-                    <button onclick="console.log('Redirect to full template catalog')" class="inline-block bg-electric-blue text-white text-xl font-bold py-4 px-12 rounded-full transition duration-300 transform hover:scale-105 shadow-2xl shadow-electric-blue/50">
-                        See All 20+ Dynamic Templates
+            <!-- 5. CONTACT/FOOTER SECTION (Form is a Glass container) -->
+            <section id="contact" class="py-16 bg-black reveal-on-scroll">
+                <div class="max-w-7xl mx-auto px-6 text-center">
+                     <!-- Wrapper for Section Title and Subtitle -->
+                    <div class="inner-glass-container rounded-lg p-4 sm:p-8 mb-8 max-w-5xl mx-auto">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-neon-cyan mb-4">
+                            Ready to Lead Your Market?
+                        </h2>
+                        <p class="text-base sm:text-xl text-white/70 max-w-2xl mx-auto">
+                            Connect with our team to discuss custom, enterprise-grade solutions built on the <span class="dynamic-text-glow">codeAmani</span> architecture.
+                        </p>
+                    </div>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you for connecting with codeAmani! We will be in touch shortly.')" class="max-w-lg mx-auto space-y-4 glass-container p-8 rounded-xl">
+                        <input type="email" placeholder="Your Professional Email" required class="w-full p-4 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition text-base">
+                        <textarea placeholder="Your Vision and Project Scope" rows="3" required class="w-full p-4 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition text-base"></textarea>
+                        <button type="submit" class="w-full bg-neon-cyan text-charcoal text-lg font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-xl shadow-neon-cyan/30">
+                            Secure Your Digital Future
+                        </button>
+                    </form>
+
+                </div>
+            </section>
+
+        </div> <!-- End main-content wrapper -->
+
+        <!-- 6. NEW TEMPLATE CATALOG PAGE (Hidden by default) -->
+        <section id="template-catalog" class="hidden min-h-screen bg-black py-12">
+            <div class="max-w-7xl mx-auto px-6 space-y-12">
+                <div class="flex justify-between items-center glass-container rounded-xl p-4">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-neon-cyan">The codeAmani Catalog</h2>
+                    <button onclick="showSection('main-content')" class="text-white hover:text-electric-blue transition-colors duration-300 text-base sm:text-lg font-semibold flex items-center space-x-2 inner-glass-container rounded-full py-2 px-4 sm:px-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        <span>Back to Home</span>
                     </button>
                 </div>
 
-            </div>
-        </section>
+                <!-- Category 1: SaaS & B2B Solutions -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white/90 catalog-row-title">Enterprise Class Solutions</h3>
+                    <div class="catalog-container flex space-x-6">
+                        
+                        <!-- Card 1 (SaaS Blueprint) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing SaaS Landing Blueprint')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #120935, #03010D);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">SaaS Blueprint</p>
+                                    <span class="text-xs text-electric-blue">High-Conversion / B2B Ready</span>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- 4. TRUSTED CLIENTS SECTION - Interactive Showcase (UPDATED) -->
-        <section id="trusted" class="py-24 bg-charcoal reveal-on-scroll border-t border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-4xl font-extrabold text-center mb-16 text-white">
-                    Trusted By Market Leaders
-                </h2>
+                        <!-- Card 2 (Apex Analytics) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Apex Analytics Dashboard')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #3A004D, #1A0020);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Apex Analytics</p>
+                                    <span class="text-xs text-purple-400">Data Visualization / Metrics</span>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="flex flex-wrap justify-center items-center gap-12 sm:gap-16 lg:gap-20">
-                    <!-- Client 1 -->
-                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
-                        onclick="showClientProductDetails('Apex Corp', 'Developed the Enterprise Data Platform Blueprint, reducing data latency by 45%.', 'text-neon-cyan')">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-neon-cyan/50 group-hover:border-electric-blue transition-colors duration-300">
-                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-neon-cyan transition-colors duration-300">A</span>
+                        <!-- Card 3 (FinTech Ledger) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing FinTech Ledger')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #003000, #001A00);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">FinTech Ledger</p>
+                                    <span class="text-xs text-green-400">Secure / Compliance Focused</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Apex Corp</p>
-                    </div>
 
-                    <!-- Client 2 -->
-                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
-                        onclick="showClientProductDetails('Zenith Retail', 'Implemented the Fluid E-commerce Checkout Flow, boosting conversion rates by 12%.', 'text-electric-blue')">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-electric-blue/50 group-hover:border-neon-cyan transition-colors duration-300">
-                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-electric-blue transition-colors duration-300">Z</span>
+                        <!-- Card 4 (Aura CRM) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Aura CRM Portal')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #0A2A2A, #051A1A);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Aura CRM Portal</p>
+                                    <span class="text-xs text-neon-cyan">User-Centric / Team Dashboard</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Zenith Retail</p>
+
                     </div>
-                    
-                    <!-- Client 3 -->
-                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
-                        onclick="showClientProductDetails('Vortex Finance', 'Designed the Secure Investment Dashboard, integrating real-time market data API connections.', 'text-green-400')">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-green-400/50 group-hover:border-green-400 transition-colors duration-300">
-                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-green-400 transition-colors duration-300">V</span>
-                        </div>
-                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Vortex Finance</p>
-                    </div>
-                    
-                    <!-- Client 4 -->
-                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
-                        onclick="showClientProductDetails('Giga Media', 'Created the High-Speed Content Delivery System, improving page load times globally.', 'text-yellow-400')">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-yellow-400/50 group-hover:border-yellow-400 transition-colors duration-300">
-                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-yellow-400 transition-colors duration-300">G</span>
-                        </div>
-                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Giga Media</p>
-                    </div>
-                    
-                    <!-- Client 5: T&T SERENITY CARE (NEW: Includes URL to open live demo) -->
-                    <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
-                        onclick="showClientProductDetails('T&T SERENITY CARE', 'Designed and deployed the premium Serenity Portal template, offering a high-touch, user-friendly booking and informational platform for premium care services.', 'text-pink-400', 'https://codeamani-solutions.github.io/serenity-preview/')">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-full bg-gray-800 border-2 border-pink-400/50 group-hover:border-pink-400 transition-colors duration-300">
-                            <span class="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-pink-400 transition-colors duration-300">T</span>
-                        </div>
-                        <p class="text-center text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">T&T Serenity Care</p>
-                    </div>
-                    
                 </div>
-            </div>
-        </section>
-
-        <!-- 5. CONTACT/FOOTER SECTION -->
-        <section id="contact" class="py-16 bg-black reveal-on-scroll">
-            <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="text-4xl font-extrabold text-neon-cyan mb-4">
-                    Ready to Lead Your Market?
-                </h2>
-                <p class="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-                    Connect with our team to discuss custom, enterprise-grade solutions built on the **codeAmani** architecture.
-                </p>
                 
-                <form onsubmit="event.preventDefault(); alert('Thank you for connecting with codeAmani! We will be in touch shortly.')" class="max-w-lg mx-auto space-y-4">
-                    <input type="email" placeholder="Your Professional Email" required class="w-full p-4 bg-charcoal border border-neon-cyan/50 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition">
-                    <textarea placeholder="Your Vision and Project Scope" rows="3" required class="w-full p-4 bg-charcoal border border-neon-cyan/50 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition"></textarea>
-                    <button type="submit" class="w-full bg-neon-cyan text-charcoal text-lg font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-xl shadow-neon-cyan/30">
-                        Secure Your Digital Future
-                    </button>
-                </form>
+                <!-- Category 4: Advanced Marketing Blueprints (NEW) -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white/90 catalog-row-title">Advanced Marketing Blueprints</h3>
+                    <div class="catalog-container flex space-x-6">
+                        
+                        <!-- Card 1 (Fusion Sales Funnel) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Fusion Sales Funnel')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #402000, #251000);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Fusion Sales Funnel</p>
+                                    <span class="text-xs text-orange-400">High-Fidelity Lead Capture</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 (Webinar Launchpad) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Webinar Launchpad')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #300A30, #180518);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Webinar Launchpad</p>
+                                    <span class="text-xs text-pink-500">Live Event Promotion / Signup</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 3 (Agency Pitch Deck) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Agency Pitch Deck')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #001A40, #000D20);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Agency Pitch Deck</p>
+                                    <span class="text-xs text-electric-blue">Client Presentation / Sleek Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 5: High-Fidelity UI/UX Kits (NEW) -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white/90 catalog-row-title">High-Fidelity UI/UX Kits</h3>
+                    <div class="catalog-container flex space-x-6">
+                        
+                        <!-- Card 1 (Component Library) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Atomic Component Library')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #252525, #101010);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Atomic UI Kit</p>
+                                    <span class="text-xs text-gray-500">Modular / Customizable Components</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 (Dashboard Pro) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Dashboard Pro Template')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #003838, #001C1C);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Dashboard Pro</p>
+                                    <span class="text-xs text-neon-cyan">Admin Panel / Data Rich</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 (Mobile App Shell) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Mobile App Shell')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #400000, #200000);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Mobile App Shell</p>
+                                    <span class="text-xs text-red-500">PWA / Cross-Platform</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Category 2: Portfolio & Creative -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white/90 catalog-row-title">Creative & Portfolio Vistas</h3>
+                    <div class="catalog-container flex space-x-6">
+                        
+                        <!-- Card 1 (Nebula Portfolio) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Nebula Portfolio')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #1A1A2E, #0D0D15);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Nebula Portfolio</p>
+                                    <span class="text-xs text-neon-cyan">Designer / Animated Showcase</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 (Studio Grid) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Studio Grid')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #4A4A4A, #2A2A2A);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Studio Grid</p>
+                                    <span class="text-xs text-gray-400">Photography / Masonry Layout</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 (Minimalist CV) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Minimalist CV')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #202020, #000000);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Minimalist CV</p>
+                                    <span class="text-xs text-white">Resume / Single Page</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: E-Commerce & Retail -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white/90 catalog-row-title">E-Commerce & Retail Fronts</h3>
+                    <div class="catalog-container flex space-x-6">
+                        
+                        <!-- Card 1 (Quantum E-Commerce) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Quantum E-Commerce')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #2A0E0E, #0A0404);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Quantum E-Commerce</p>
+                                    <span class="text-xs text-pink-400">Luxury Retail / Minimalist</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 (Flash Sale) -->
+                        <div class="catalog-card rounded-lg glass-container" onclick="alert('Viewing Flash Sale Landing')">
+                            <div class="catalog-card-image" style="background: linear-gradient(to top right, #403000, #201800);">
+                                <div class="glare-overlay opacity-50"></div>
+                                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
+                                    <p class="text-lg font-bold">Flash Sale Landing</p>
+                                    <span class="text-xs text-yellow-400">Urgency / High Traffic</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
+
+        <!-- Footer - Simple & Elegant (Glass) - Duplicated for Catalog Page -->
+        <footer id="catalog-footer" class="hidden glass-container border-t border-neon-cyan/10 py-8 bg-black">
+            <div class="max-w-7xl mx-auto px-6 text-center text-sm text-white/50">
+                <p>&copy; 2025 codeAmani Solutions. All Rights Reserved. | <span class="text-neon-cyan font-semibold">Luxury. Dynamic. Solution-Focused.</span></p>
+            </div>
+        </footer>
     </main>
 
-    <!-- Footer - Simple & Elegant -->
-    <footer class="bg-black border-t border-neon-cyan/10 py-8">
-        <div class="max-w-7xl mx-auto px-6 text-center text-sm text-white/50">
-            <p>&copy; 2025 codeAmani Solutions. All Rights Reserved. | <span class="text-neon-cyan font-semibold">Luxury. Dynamic. Solution-Focused.</span></p>
-        </div>
-    </footer>
-
-
+    <!-- Modal and Script Section -->
     <script>
+        // --- Service Tier Data ---
+        const serviceTiers = {
+            'AI & Automation': {
+                color: 'text-red-500',
+                bg: 'bg-red-500',
+                tiers: [
+                    {
+                        name: 'Bronze (Pilot)', price: '$499/mo', focus: 'AI Metrics Foundation',
+                        features: ['Basic Site Metrics & Visitor Data', 'Quarterly Optimization Report', '1 AI Workflow/Month']
+                    },
+                    {
+                        name: 'Silver (Growth)', price: '$1,499/mo', focus: 'ROI Capitalization',
+                        features: ['Advanced AI Analytics & Prediction', 'Dedicated AI Chatbot Setup', 'Weekly Automation Monitoring', 'Monthly Consulting Call']
+                    },
+                    {
+                        name: 'Gold (Enterprise)', price: '$3,999/mo', focus: 'Full-Spectrum Autonomy',
+                        features: ['Full AI ROI Optimization Stack', 'Custom Machine Learning Model', 'Priority 24/7 Support', 'Dedicated Business Consultant']
+                    }
+                ]
+            },
+            'Brand & Campaigns': {
+                color: 'text-yellow-500',
+                bg: 'bg-yellow-500',
+                tiers: [
+                    {
+                        name: 'Bronze (Starter)', price: '$599/mo', focus: 'Social Presence',
+                        features: ['3 Social Posts/Week', 'Basic Ad Account Setup', 'Quarterly Strategy Review']
+                    },
+                    {
+                        name: 'Silver (Scaling)', price: '$1,999/mo', focus: 'Ad Campaign Mastery',
+                        features: ['Full Ad Campaign Management (up to $5k spend)', 'Daily Social Account Monitoring', 'Bi-Weekly Consulting Call']
+                    },
+                    {
+                        name: 'Gold (Dominance)', price: '$4,999/mo', focus: 'Market Leadership',
+                        features: ['Unlimited Ad Spend Management', 'Full Content Creation Suite', 'C-Level Business Consulting', 'Guaranteed Reach Targets']
+                    }
+                ]
+            },
+            'Foundation & Growth': {
+                color: 'text-green-500',
+                bg: 'bg-green-500',
+                tiers: [
+                    {
+                        name: 'Bronze (Essential)', price: '$399/mo', focus: 'Core Stability',
+                        features: ['Secure Hosting & CDN', 'Monthly Site Maintenance', 'Basic SEO Monitoring']
+                    },
+                    {
+                        name: 'Silver (Optimization)', price: '$999/mo', focus: 'SEO & Review',
+                        features: ['Advanced SEO Keyword Targeting', 'Review Plugin Integration', 'Quarterly Site Speed Audit', 'Technical SEO Fixes']
+                    },
+                    {
+                        name: 'Gold (Full Build)', price: 'Custom Quote', focus: 'New Site Design & Launch',
+                        features: ['Dedicated Site Development Team', 'Full Code Audit & Optimization', 'Ongoing Design Updates (10hrs/mo)', 'Priority Infrastructure Support']
+                    }
+                ]
+            }
+        };
+        
+        // NEW MOBILE TOGGLE FUNCTION
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            const isOpen = menu.classList.contains('flex');
+
+            if (isOpen) {
+                // Close menu
+                menu.classList.remove('flex');
+                menu.classList.add('hidden');
+                button.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>';
+            } else {
+                // Open menu
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                button.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            }
+        }
+        
+        // --- View Switching Logic ---
+        function showSection(sectionId) {
+            const mainContent = document.getElementById('main-content');
+            const catalog = document.getElementById('template-catalog');
+            const catalogFooter = document.getElementById('catalog-footer');
+
+            if (sectionId === 'template-catalog') {
+                mainContent.classList.add('hidden');
+                catalog.classList.remove('hidden');
+                catalogFooter.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                mainContent.classList.remove('hidden');
+                catalog.classList.add('hidden');
+                catalogFooter.classList.add('hidden');
+                // Optional: Scroll to the top of the main content or a specific section
+                const targetElement = document.getElementById('hero') || document.body;
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            }
+        }
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                // Ensure we are on the main page before scrolling
+                if (document.getElementById('main-content').classList.contains('hidden')) {
+                     showSection('main-content');
+                }
+                const targetId = this.getAttribute('href');
+                // Ensure scroll happens after section visibility is handled
+                setTimeout(() => {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 100);
             });
         });
 
@@ -358,12 +950,13 @@
         });
 
         // IMPORTANT: Custom alert/notification function to replace window.alert()
-        // This is used for simple messages like form success.
+        // This is used for simple messages like form success and now template viewing.
         function alert(message) {
             const container = document.createElement('div');
             container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-70';
+            // UPDATED: Modal now uses glass-container
             container.innerHTML = `
-                <div class="bg-gray-900 p-8 rounded-xl max-w-sm mx-4 text-center border-2 border-neon-cyan shadow-neon-cyan/50 shadow-2xl transform scale-95 transition-all duration-300">
+                <div class="glass-container p-8 rounded-xl max-w-sm mx-4 text-center border-2 border-neon-cyan/70 shadow-2xl transform scale-95 transition-all duration-300">
                     <p class="text-xl font-semibold mb-4 text-white">${message}</p>
                     <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan transition duration-300 text-sm" onclick="this.closest('.fixed').remove()">
                         Close
@@ -378,7 +971,7 @@
             }, 10);
         }
 
-        // Function to display detailed client product information in a custom modal (UPDATED to accept link)
+        // Function to display detailed client product information in a custom modal (UPDATED to use glass-container)
         function showClientProductDetails(clientName, productDescription, colorClass, link = null) {
             const container = document.createElement('div');
             container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm';
@@ -386,14 +979,15 @@
             // Generate the Live Demo button HTML only if a link is provided
             const liveDemoButton = link ? `
                 <a href="${link}" target="_blank" class="live-demo-btn bg-neon-cyan text-charcoal py-2 px-6 rounded-full font-bold hover:bg-electric-blue hover:text-white transition duration-300 text-sm mt-4 inline-flex items-center space-x-2">
-                    <span>View Live Serenity Portal</span>
+                    <span>View Live Demo</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-2h6m0 0l-3-3m3 3l-3 3"></path></svg>
                 </a>
             ` : '';
 
+            // UPDATED: Modal now uses glass-container
             container.innerHTML = `
-                <div class="bg-gray-900 p-8 sm:p-12 rounded-xl max-w-lg mx-4 text-left border-2 border-neon-cyan/50 shadow-neon-cyan/50 shadow-2xl transform scale-95 transition-all duration-300 space-y-4">
-                    <h3 class="text-2xl font-extrabold text-white border-b border-electric-blue/50 pb-2">Client Solution: <span class="${colorClass}">${clientName}</span></h3>
+                <div class="glass-container p-8 sm:p-12 rounded-xl max-w-lg mx-4 text-left border-2 border-neon-cyan/70 shadow-2xl transform scale-95 transition-all duration-300 space-y-4">
+                    <h3 class="2xl font-extrabold text-white border-b border-electric-blue/50 pb-2">Client Solution: <span class="${colorClass}">${clientName}</span></h3>
                     <p class="text-lg text-white/80">${productDescription}</p>
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-6 pt-4 border-t border-white/10">
                         ${liveDemoButton}
@@ -401,6 +995,61 @@
                             Close
                         </button>
                     </div>
+                </div>
+            `;
+            document.body.appendChild(container);
+
+            // Animate in
+            setTimeout(() => {
+                 container.querySelector('div').classList.remove('scale-95');
+            }, 10);
+        }
+        
+        // NEW: Function to display Service Tiers in a high-tech modal
+        function showServiceTiers(pillarName, features, colorClass, bgClass) {
+            const pillarData = serviceTiers[pillarName];
+            if (!pillarData) return;
+
+            let tiersHtml = pillarData.tiers.map(tier => {
+                const featureList = tier.features.map(f => `<li class="flex items-start space-x-2 text-white/80 text-sm">
+                    <svg class="w-4 h-4 mt-1 flex-shrink-0 ${colorClass.replace('text', 'text')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>${f}</span>
+                </li>`).join('');
+
+                return `
+                    <div class="glass-container rounded-xl p-6 flex flex-col justify-between h-full border-2 border-white/10 hover:border-neon-cyan transition duration-300 transform hover:scale-[1.02]">
+                        <div class="space-y-4">
+                            <h4 class="text-2xl font-extrabold ${colorClass}">${tier.name}</h4>
+                            <p class="text-4xl font-extrabold text-white mb-2 tracking-tighter">${tier.price}</p>
+                            <p class="text-sm text-white/60 font-semibold uppercase">${tier.focus}</p>
+                            <ul class="space-y-3 pt-4 border-t border-white/10">
+                                ${featureList}
+                            </ul>
+                        </div>
+                        <button class="w-full ${bgClass.replace('bg', 'bg')}/90 text-charcoal font-bold py-3 mt-6 rounded-lg transition duration-300 transform hover:bg-neon-cyan hover:text-charcoal">
+                            Start ${tier.name}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            const container = document.createElement('div');
+            container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-md overflow-y-auto py-10';
+
+            container.innerHTML = `
+                <div class="glass-container p-8 rounded-xl max-w-6xl mx-4 text-center border-2 border-neon-cyan/70 shadow-2xl transform scale-95 transition-all duration-300 w-full">
+                    <h3 class="text-4xl font-extrabold text-white border-b border-electric-blue/50 pb-4 mb-8">
+                        Subscription Tiers: <span class="${colorClass}">${pillarName}</span>
+                    </h3>
+                    <p class="text-lg text-white/70 mb-10">All packages feature **Monthly Recurring Revenue (MRR)** models for seamless scaling.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        ${tiersHtml}
+                    </div>
+
+                    <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan hover:text-charcoal transition duration-300 text-sm mt-8" onclick="this.closest('.fixed').remove()">
+                        Close Tiers View
+                    </button>
                 </div>
             `;
             document.body.appendChild(container);
