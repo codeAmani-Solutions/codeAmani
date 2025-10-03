@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,24 @@
                         'charcoal': '#1C1C1E',
                         'neon-cyan': '#00F0FF',
                         'electric-blue': '#4060FF',
+                        // Colors imported from the Pricing File (adjusted to fit Tailwind config)
+                        'brand-500': '#2d87ff',
+                        'brand-400': '#56a6ff',
+                        'brand-200': '#b6dbff',
+                        'brand-600': '#256de6',
+                        'slate-700': '#334155',
+                        'slate-400': '#94a3b8',
+                        'slate-900': '#0f172a',
+                        'rose-500': '#f43f5e',
+                        'rose-400': '#fb7185',
+                        'yellow-500': '#f59e0b',
+                        'yellow-400': '#facc15',
+                        'emerald-500': '#10b981',
+                        'emerald-400': '#34d399',
+                        'fuchsia-500': '#e879f9',
+                        'fuchsia-200': '#f0abfc',
+                        'sky-300': '#7dd3fc',
+                        'gray-900': '#111827',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -27,11 +45,16 @@
                     },
                     animation: {
                         'text-glow': 'glow 3s ease-in-out infinite',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 0 1px rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.35)'
                     }
                 },
             }
         }
     </script>
+    <!-- Lucide Icons (Required for the new pricing section) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Base styling for a dark, high-contrast look */
         body {
@@ -183,9 +206,39 @@
             background-size: cover;
             background-position: center;
         }
+
+        /* Pricing Card Overrides to blend with Glassmorphism */
+        .card { 
+            backdrop-filter: blur(8px); 
+            background: rgba(28, 28, 30, 0.5); 
+            border: 1px solid rgba(255,255,255,0.08); /* White border for definition */
+            color: #E0E0E0; /* Light text */
+        }
+        .feature li { display: grid; grid-template-columns: 20px 1fr; gap: .75rem; align-items: start; }
+        
+        /* Trusted By Section Specific Styling */
+        .trusted-client-logo {
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            width: 120px; /* Increased size for mobile/desktop visibility */
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(28, 28, 30, 0.8); /* Dark background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .trusted-client-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px 5px rgba(0, 240, 255, 0.6); /* Neon glow on hover */
+            border-color: #00F0FF;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-brand-500/30 selection:text-white">
 
     <!-- Sticky Header Navigation (Now Glassmorphism) -->
     <header class="sticky top-0 z-50 glass-container shadow-2xl">
@@ -197,7 +250,7 @@
 
             <!-- Desktop Navigation Links -->
             <div class="space-x-4 hidden md:flex">
-                <!-- Solutions -> Digital Architecture -->
+                <!-- Services -->
                 <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
                     <a href="#digital-architecture" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('main-content')">Services</a>
                 </div>
@@ -283,106 +336,180 @@
                 </div>
             </section>
 
-            <!-- 2. DIGITAL ARCHITECTURE (New Solutions Section) - Focused on Full-Service Partnership -->
-            <section id="digital-architecture" class="py-16 sm:py-24 bg-charcoal reveal-on-scroll">
+            <!-- 2. DIGITAL ARCHITECTURE (NEW Pricing Section) - Fully Integrated from uploaded file -->
+            <section id="digital-architecture" class="py-16 sm:py-24 bg-gray-900 reveal-on-scroll">
                 <div class="max-w-7xl mx-auto px-6">
                     
-                    <!-- Title Block -->
-                    <div class="glass-container rounded-xl p-4 sm:p-8 mb-10 sm:mb-16 max-w-5xl mx-auto space-y-4">
-                        <!-- Wrapper for Section Title -->
-                        <div class="inner-glass-container rounded-lg p-4 sm:p-8">
-                            <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-4 hero-gradient-text">
-                                Complete Digital Architecture
-                            </h2>
-                        </div>
-
-                        <!-- Wrapper for Subtitle -->
-                        <div class="inner-glass-container rounded-lg p-4 sm:p-8 max-w-3xl mx-auto">
-                            <p class="text-center text-base sm:text-lg text-white/70">
-                                We fuse <span class="dynamic-text-glow">high-tech functionality</span> with <span class="dynamic-text-glow">uncompromising aesthetics</span> to deliver immediate, measurable business results.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- End Title Block -->
-
-
-                    <div class="grid md:grid-cols-3 gap-6 sm:gap-10">
-                        
-                        <!-- Service Pillar 1: AI & AUTOMATION -->
-                        <div class="cursor-pointer group glass-container rounded-xl shadow-2xl reveal-on-scroll p-4 space-y-4 hover:border-red-500 transition duration-300"
-                            onclick="showServiceTiers('AI & Automation', [
-                                'AI-Powered ROI Optimization', 
-                                'Real-Time Metrics & Analytics', 
-                                'AI Chatbot Integration', 
-                                'Automation Workflow Deployment'
-                            ], 'text-red-500', 'bg-red-500')">
-                            <!-- Inner Container 1: Icon + Title -->
-                            <div class="inner-glass-container rounded-lg p-4">
-                                <div class="text-4xl text-red-500 mb-3 group-hover:text-neon-cyan transition-colors duration-300">
-                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <!-- Header -->
+                    <header class="max-w-7xl mx-auto text-center">
+                        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Build your digital backbone</h1>
+                        <p class="mt-3 text-slate-400 max-w-2xl mx-auto">AI powered site care, brand growth, and automation in simple monthly plans. Website build is a separate one time fee.</p>
+                    </header>
+    
+                    <!-- Pillars (Horizontal Scroll on Mobile) -->
+                    <section class="max-w-7xl mx-auto mt-10 overflow-x-auto">
+                        <div class="flex flex-row md:grid md:grid-cols-3 gap-6 pb-2">
+                            <!-- Pillar 1 -->
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow w-64 md:w-auto flex-shrink-0">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-rose-500/20 flex items-center justify-center"><i data-lucide="zap" class="w-5 h-5 text-rose-400"></i></div>
+                                    <h3 class="text-xl font-semibold text-white">AI and Automation</h3>
                                 </div>
-                                <h3 class="text-xl sm:text-2xl font-semibold text-white">AI & Automation</h3>
+                                <p class="mt-3 text-slate-400">Capitalize your ROI, streamline operations, and gain deep intelligence for better SEO and conversions.</p>
                             </div>
-                            
-                            <!-- Inner Container 2: Text Area -->
-                            <div class="inner-glass-container rounded-lg p-4">
-                                <p class="text-sm sm:text-base text-white/70">Capitalize your ROI, streamline operations, and gain deep, immediate intelligence using cutting-edge AI.</p>
-                            </div>
-                        </div>
-
-                        <!-- Service Pillar 2: BRAND & CAMPAIGNS -->
-                        <div class="cursor-pointer group glass-container rounded-xl shadow-2xl reveal-on-scroll p-4 space-y-4 hover:border-yellow-500 transition duration-300"
-                            style="transition-delay: 0.2s;"
-                            onclick="showServiceTiers('Brand & Campaigns', [
-                                'Full-Cycle Ad Campaign Management', 
-                                'Social Media Account Strategy & Growth', 
-                                'Premium Content Creation', 
-                                'Business Consulting & Strategy'
-                            ], 'text-yellow-500', 'bg-yellow-500')">
-                            <!-- Inner Container 1: Icon + Title -->
-                            <div class="inner-glass-container rounded-lg p-4">
-                                <div class="text-4xl text-yellow-500 mb-3 group-hover:text-neon-cyan transition-colors duration-300">
-                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v5m0 0a2 2 0 100-4 2 2 0 000 4zm-7-9l2-2h10l2 2-7 7-7-7z"></path></svg>
-                            </div>
-                                <h3 class="text-xl sm:text-2xl font-semibold text-white">Brand & Campaigns</h3>
-                            </div>
-
-                            <!-- Inner Container 2: Text Area -->
-                            <div class="inner-glass-container rounded-lg p-4">
-                                <p class="text-sm sm:text-base text-white/70">Elevate your brand presence, manage your reputation, and scale your reach with high-impact ad and social campaigns.</p>
-                            </div>
-                        </div>
-
-                        <!-- Service Pillar 3: FOUNDATION & GROWTH -->
-                        <div class="cursor-pointer group glass-container rounded-xl shadow-2xl reveal-on-scroll p-4 space-y-4 hover:border-green-500 transition duration-300" 
-                            style="transition-delay: 0.4s;"
-                            onclick="showServiceTiers('Foundation & Growth', [
-                                'High-End Site Design & Development', 
-                                'Advanced SEO for Top Google Rank', 
-                                'Secure Hosting & Maintenance', 
-                                'Review Plugin Integration'
-                            ], 'text-green-500', 'bg-green-500')">
-                            <!-- Inner Container 1: Icon + Title -->
-                            <div class="inner-glass-container rounded-lg p-4">
-                                <div class="text-4xl text-green-500 mb-3 group-hover:text-neon-cyan transition-colors duration-300">
-                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1l-.75-3M3 17h18M5 17h14l-1.5 5H6.5L5 17zM12 4v12m0-12l3-3m-3 3L9 1"></path></svg>
+                            <!-- Pillar 2 -->
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow w-64 md:w-auto flex-shrink-0">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center"><i data-lucide="trophy" class="w-5 h-5 text-yellow-400"></i></div>
+                                    <h3 class="text-xl font-semibold text-white">Brand and Campaigns</h3>
                                 </div>
-                                <h3 class="text-xl sm:text-2xl font-semibold text-white">Foundation & Growth</h3>
+                                <p class="mt-3 text-slate-400">Elevate your brand presence, manage reputation, and scale your reach with high impact social campaigns.</p>
                             </div>
-
-                            <!-- Inner Container 2: Text Area -->
-                            <div class="inner-glass-container rounded-lg p-4">
-                                <p class="text-sm sm:text-base text-white/70">From dynamic site creation to achieving top Google rankings, we build the robust digital infrastructure your business needs.</p>
+                            <!-- Pillar 3 -->
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow w-64 md:w-auto flex-shrink-0">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center"><i data-lucide="sprout" class="w-5 h-5 text-emerald-400"></i></div>
+                                    <h3 class="text-xl font-semibold text-white">Foundation and Growth</h3>
+                                </div>
+                                <p class="mt-3 text-slate-400">We build the stable digital infrastructure from site care to search ranking that powers your business needs.</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="text-center mt-16 sm:mt-20 reveal-on-scroll" style="transition-delay: 0.6s;">
-                        <button onclick="showServiceTiers('AI & Automation', serviceTiers['AI & Automation'].features, 'text-red-500', 'bg-red-500')" class="inline-block bg-electric-blue text-white text-base sm:text-xl font-bold py-3 sm:py-4 px-8 sm:px-12 rounded-full transition duration-300 transform hover:scale-105 shadow-2xl shadow-electric-blue/50">
-                            View Monthly Subscription Tiers
-                        </button>
-                    </div>
-
+                    </section>
+    
+                    <!-- Billing toggle -->
+                    <section class="max-w-7xl mx-auto mt-12">
+                        <div class="flex items-center justify-center gap-3 text-sm">
+                            <span class="text-slate-400">Monthly</span>
+                            <button id="billSwitch" class="relative inline-flex h-8 w-16 items-center rounded-full bg-slate-700/70 border border-white/10 transition">
+                                <span id="knob" class="inline-block h-6 w-6 translate-x-1 rounded-full bg-white shadow ring-1 ring-black/5 transition"></span>
+                            </button>
+                            <span class="text-slate-400">Annual <span class="ml-1 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">save two months</span></span>
+                        </div>
+                        <p class="mt-2 text-center text-xs text-slate-400">Toggle to see annual values. Charges renew at the selected cadence.</p>
+                    </section>
+    
+                    <!-- Pricing cards -->
+                    <section class="max-w-7xl mx-auto mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                        <!-- Foundation -->
+                        <div class="card group rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow hover:border-brand-400/40 transition">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-white">Foundation</h3>
+                                <span class="text-xs px-2 py-1 rounded-full bg-slate-700/60 text-slate-200 border border-white/10">Starter</span>
+                            </div>
+                            <div class="mt-4">
+                                <div class="flex items-end gap-1">
+                                    <span class="text-4xl font-bold text-white"><span class="price" data-m="149" data-a="1490">$149</span></span>
+                                    <span class="text-slate-400 mb-1">/mo</span>
+                                </div>
+                                <p class="mt-2 text-sm text-slate-400">Digital stability and site care</p>
+                            </div>
+                            <ul class="feature mt-6 space-y-3 text-sm">
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Hosting and site maintenance</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Monthly analytics report</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>AI search optimization</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Security patching and uptime monitoring</span></li>
+                            </ul>
+                            <button class="mt-6 w-full rounded-xl bg-white text-slate-900 font-medium py-2.5 hover:bg-slate-100">Choose Foundation</button>
+                        </div>
+    
+                        <!-- Growth -->
+                        <div class="card group rounded-2xl border border-brand-400/40 bg-gradient-to-b from-white/10 to-white/5 p-6 shadow-glow">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-white">Growth</h3>
+                                <span class="text-xs px-2 py-1 rounded-full bg-brand-500/20 text-brand-200 border border-brand-400/30">Most popular</span>
+                            </div>
+                            <div class="mt-4">
+                                <div class="flex items-end gap-1">
+                                    <span class="text-4xl font-bold text-white"><span class="price" data-m="349" data-a="3490">$349</span></span>
+                                    <span class="text-slate-400 mb-1">/mo</span>
+                                </div>
+                                <p class="mt-2 text-sm text-slate-400">Brand presence and steady content</p>
+                            </div>
+                            <ul class="feature mt-6 space-y-3 text-sm">
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Everything in Foundation</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Instagram and Facebook content four posts each week</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Caption writing, scheduling, and trends</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Monthly performance insights</span></li>
+                            </ul>
+                            <button class="mt-6 w-full rounded-xl bg-brand-500 text-white font-medium py-2.5 hover:bg-brand-600">Choose Growth</button>
+                        </div>
+    
+                        <!-- Automation -->
+                        <div class="card group rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow hover:border-brand-400/40 transition">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-white">Automation</h3>
+                                <span class="text-xs px-2 py-1 rounded-full bg-fuchsia-500/20 text-fuchsia-200 border border-white/10">Leads and funnels</span>
+                            </div>
+                            <div class="mt-4">
+                                <div class="flex items-end gap-1">
+                                    <span class="text-4xl font-bold text-white"><span class="price" data-m="699" data-a="6990">$699</span></span>
+                                    <span class="text-slate-400 mb-1">/mo</span>
+                                </div>
+                                <p class="mt-2 text-sm text-slate-400">Automation and conversion focus</p>
+                            </div>
+                            <ul class="feature mt-6 space-y-3 text-sm">
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Everything in Growth</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Email marketing automation and list growth</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Lead magnet and funnel design</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Industry lead research</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Advanced analytics dashboard and strategy call each month</span></li>
+                            </ul>
+                            <button class="mt-6 w-full rounded-xl bg-white text-slate-900 font-medium py-2.5 hover:bg-slate-100">Choose Automation</button>
+                        </div>
+    
+                        <!-- Enterprise -->
+                        <div class="card group rounded-2xl border border-white/10 bg-white/5 p-6 shadow-glow">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-white">Enterprise</h3>
+                                <span class="text-xs px-2 py-1 rounded-full bg-slate-700/60 text-slate-200 border border-white/10">Custom</span>
+                            </div>
+                            <div class="mt-4">
+                                <div class="flex items-end gap-1">
+                                    <span class="text-4xl font-bold text-white">Custom</span>
+                                </div>
+                                <p class="mt-2 text-sm text-slate-400">Full digital ecosystem with priority care</p>
+                            </div>
+                            <ul class="feature mt-6 space-y-3 text-sm">
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Everything in Automation</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Team AI training and integrations</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Multi channel campaigns and priority support</span></li>
+                                <li><i data-lucide="check" class="w-5 h-5 text-emerald-400 mt-0.5"></i><span>Dedicated manager</span></li>
+                            </ul>
+                            <button class="mt-6 w-full rounded-xl bg-transparent border border-white/20 text-white font-medium py-2.5 hover:bg-white/10">Request a proposal</button>
+                        </div>
+                    </section>
+    
+                    <!-- Add ons -->
+                    <section class="max-w-7xl mx-auto mt-14">
+                        <h2 class="text-2xl font-semibold text-white text-center">One time setup and add ons</h2>
+                        <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-5">
+                                <div class="flex items-center gap-2"><i data-lucide="globe" class="w-5 h-5 text-brand-400"></i><h3 class="font-medium text-white">Website build</h3></div>
+                                <p class="mt-2 text-sm text-slate-400">From $800 to $3,000 depending on scope. Required before monthly plans.</p>
+                            </div>
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-5">
+                                <div class="flex items-center gap-2"><i data-lucide="badge-check" class="w-5 h-5 text-emerald-400"></i><h3 class="font-medium text-white">Logo and brand kit</h3></div>
+                                <p class="mt-2 text-sm text-slate-400">Logo $250. Business cards and templates $100.</p>
+                            </div>
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-5">
+                                <div class="flex items-center gap-2"><i data-lucide="phone" class="w-5 h-5 text-fuchsia-400"></i><h3 class="font-medium text-white">App or SaaS</h3></div>
+                                <p class="mt-2 text-sm text-slate-400">Custom quote after discovery session.</p>
+                            </div>
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-5">
+                                <div class="flex items-center gap-2"><i data-lucide="shield" class="w-5 h-5 text-yellow-400"></i><h3 class="font-medium text-white">Cybersecurity course</h3></div>
+                                <p class="mt-2 text-sm text-slate-400">$99 per person. Covers phishing, smishing, and safe practice.</p>
+                            </div>
+                            <div class="card rounded-2xl border border-white/10 bg-white/5 p-5">
+                                <div class="flex items-center gap-2"><i data-lucide="mail" class="w-5 h-5 text-sky-300"></i><h3 class="font-medium text-white">CRM setup</h3></div>
+                                <p class="mt-2 text-sm text-slate-400">$250 setup for HubSpot, Mailchimp, or ActiveCampaign.</p>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!-- FAQ hint -->
+                    <section class="max-w-5xl mx-auto mt-14 text-center">
+                        <p class="text-slate-400 text-sm">All plans include month to month flexibility. Cancel any time with ten days notice. Prices exclude taxes and third party fees.</p>
+                    </section>
                 </div>
             </section>
             
@@ -500,58 +627,52 @@
 
 
                     <div class="flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-20">
-                        <!-- Client 1 (Glass) -->
+                        <!-- Client 1 (Glass) - UPDATED TO FULL NAME -->
                         <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
                             onclick="showClientProductDetails('Apex Corp', 'Developed the Enterprise Data Platform Blueprint, reducing data latency by 45%.', 'text-neon-cyan')">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-electric-blue transition-colors duration-300">
-                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-neon-cyan transition-colors duration-300">A</span>
+                            <div class="w-32 h-32 flex items-center justify-center rounded-full glass-container group-hover:border-electric-blue transition-colors duration-300 trusted-client-logo">
+                                <span class="text-base sm:text-lg font-extrabold text-white group-hover:text-neon-cyan transition-colors duration-300 text-center tracking-wide">Apex Corp</span>
                             </div>
-                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Apex Corp</p>
                         </div>
 
-                        <!-- Client 2 (Glass) -->
+                        <!-- Client 2 (Glass) - UPDATED TO FULL NAME -->
                         <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
                             onclick="showClientProductDetails('Zenith Retail', 'Implemented the Fluid E-commerce Checkout Flow, boosting conversion rates by 12%.', 'text-electric-blue')">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-neon-cyan transition-colors duration-300">
-                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-electric-blue transition-colors duration-300">Z</span>
+                            <div class="w-32 h-32 flex items-center justify-center rounded-full glass-container group-hover:border-neon-cyan transition-colors duration-300 trusted-client-logo">
+                                <span class="text-base sm:text-lg font-extrabold text-white group-hover:text-electric-blue transition-colors duration-300 text-center tracking-wide">Zenith Retail</span>
                             </div>
-                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Zenith Retail</p>
                         </div>
                         
-                        <!-- Client 3 (Glass) -->
+                        <!-- Client 3 (Glass) - UPDATED TO FULL NAME -->
                         <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
                             onclick="showClientProductDetails('Vortex Finance', 'Designed the Secure Investment Dashboard, integrating real-time market data API connections.', 'text-green-400')">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-green-400 transition-colors duration-300">
-                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-green-400 transition-colors duration-300">V</span>
+                            <div class="w-32 h-32 flex items-center justify-center rounded-full glass-container group-hover:border-green-400 transition-colors duration-300 trusted-client-logo">
+                                <span class="text-base sm:text-lg font-extrabold text-white group-hover:text-green-400 transition-colors duration-300 text-center tracking-wide">Vortex Finance</span>
                             </div>
-                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Vortex Finance</p>
                         </div>
                         
-                        <!-- Client 4 (Glass) -->
+                        <!-- Client 4 (Glass) - UPDATED TO FULL NAME -->
                         <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
                             onclick="showClientProductDetails('Giga Media', 'Created the High-Speed Content Delivery System, improving page load times globally.', 'text-yellow-400')">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-yellow-400 transition-colors duration-300">
-                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-yellow-400 transition-colors duration-300">G</span>
+                            <div class="w-32 h-32 flex items-center justify-center rounded-full glass-container group-hover:border-yellow-400 transition-colors duration-300 trusted-client-logo">
+                                <span class="text-base sm:text-lg font-extrabold text-white group-hover:text-yellow-400 transition-colors duration-300 text-center tracking-wide">Giga Media</span>
                             </div>
-                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Giga Media</p>
                         </div>
                         
-                        <!-- Client 5: T&T SERENITY CARE (Glass) -->
+                        <!-- Client 5: T&T SERENITY CARE (Glass) - UPDATED TO FULL NAME -->
                         <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
                             onclick="showClientProductDetails('T&T SERENITY CARE', 'Designed and deployed the premium Serenity Portal template, offering a high-touch, user-friendly booking and informational platform for premium care services.', 'text-pink-400', 'https://codeamani-solutions.github.io/serenity-preview/')">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-pink-400 transition-colors duration-300">
-                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-pink-400 transition-colors duration-300">T</span>
+                            <div class="w-32 h-32 flex items-center justify-center rounded-full glass-container group-hover:border-pink-400 transition-colors duration-300 trusted-client-logo">
+                                <span class="text-base sm:text-lg font-extrabold text-white group-hover:text-pink-400 transition-colors duration-300 text-center tracking-wide">T&T SERENITY CARE</span>
                             </div>
-                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">T&T Serenity Care</p>
                         </div>
 
-                        <!-- Client 6: Pixel Prodigy (Glass) -->
+                        <!-- Client 6: Pixel Prodigy (Glass) - UPDATED TO FULL NAME -->
                         <div class="cursor-pointer group transform hover:scale-105 transition duration-300" 
                             onclick="showClientProductDetails('Pixel Prodigy', 'Crafted a bespoke, dynamic landing experience for their new flagship design software, focusing on breathtaking visual fidelity and load speed.', 'text-purple-400', 'https://codeamani-solutions.github.io/pixelprodigy/')">
-                            <div class="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center rounded-full glass-container group-hover:border-purple-400 transition-colors duration-300">
-                                <span class="text-2xl sm:text-4xl font-extrabold text-white group-hover:text-purple-400 transition-colors duration-300">P</span>
+                            <div class="w-32 h-32 flex items-center justify-center rounded-full glass-container group-hover:border-purple-400 transition-colors duration-300 trusted-client-logo">
+                                <span class="text-base sm:text-lg font-extrabold text-white group-hover:text-purple-400 transition-colors duration-300 text-center tracking-wide">Pixel Prodigy</span>
                             </div>
-                            <p class="text-center text-xs sm:text-sm mt-2 text-white/70 group-hover:text-white transition-colors duration-300">Pixel Prodigy</p>
                         </div>
                         
                     </div>
@@ -810,63 +931,6 @@
 
     <!-- Modal and Script Section -->
     <script>
-        // --- Service Tier Data ---
-        const serviceTiers = {
-            'AI & Automation': {
-                color: 'text-red-500',
-                bg: 'bg-red-500',
-                tiers: [
-                    {
-                        name: 'Bronze (Pilot)', price: '$499/mo', focus: 'AI Metrics Foundation',
-                        features: ['Basic Site Metrics & Visitor Data', 'Quarterly Optimization Report', '1 AI Workflow/Month']
-                    },
-                    {
-                        name: 'Silver (Growth)', price: '$1,499/mo', focus: 'ROI Capitalization',
-                        features: ['Advanced AI Analytics & Prediction', 'Dedicated AI Chatbot Setup', 'Weekly Automation Monitoring', 'Monthly Consulting Call']
-                    },
-                    {
-                        name: 'Gold (Enterprise)', price: '$3,999/mo', focus: 'Full-Spectrum Autonomy',
-                        features: ['Full AI ROI Optimization Stack', 'Custom Machine Learning Model', 'Priority 24/7 Support', 'Dedicated Business Consultant']
-                    }
-                ]
-            },
-            'Brand & Campaigns': {
-                color: 'text-yellow-500',
-                bg: 'bg-yellow-500',
-                tiers: [
-                    {
-                        name: 'Bronze (Starter)', price: '$599/mo', focus: 'Social Presence',
-                        features: ['3 Social Posts/Week', 'Basic Ad Account Setup', 'Quarterly Strategy Review']
-                    },
-                    {
-                        name: 'Silver (Scaling)', price: '$1,999/mo', focus: 'Ad Campaign Mastery',
-                        features: ['Full Ad Campaign Management (up to $5k spend)', 'Daily Social Account Monitoring', 'Bi-Weekly Consulting Call']
-                    },
-                    {
-                        name: 'Gold (Dominance)', price: '$4,999/mo', focus: 'Market Leadership',
-                        features: ['Unlimited Ad Spend Management', 'Full Content Creation Suite', 'C-Level Business Consulting', 'Guaranteed Reach Targets']
-                    }
-                ]
-            },
-            'Foundation & Growth': {
-                color: 'text-green-500',
-                bg: 'bg-green-500',
-                tiers: [
-                    {
-                        name: 'Bronze (Essential)', price: '$399/mo', focus: 'Core Stability',
-                        features: ['Secure Hosting & CDN', 'Monthly Site Maintenance', 'Basic SEO Monitoring']
-                    },
-                    {
-                        name: 'Silver (Optimization)', price: '$999/mo', focus: 'SEO & Review',
-                        features: ['Advanced SEO Keyword Targeting', 'Review Plugin Integration', 'Quarterly Site Speed Audit', 'Technical SEO Fixes']
-                    },
-                    {
-                        name: 'Gold (Full Build)', price: 'Custom Quote', focus: 'New Site Design & Launch',
-                        features: ['Dedicated Site Development Team', 'Full Code Audit & Optimization', 'Ongoing Design Updates (10hrs/mo)', 'Priority Infrastructure Support']
-                    }
-                ]
-            }
-        };
         
         // NEW MOBILE TOGGLE FUNCTION
         function toggleMobileMenu() {
@@ -1005,60 +1069,49 @@
             }, 10);
         }
         
-        // NEW: Function to display Service Tiers in a high-tech modal
-        function showServiceTiers(pillarName, features, colorClass, bgClass) {
-            const pillarData = serviceTiers[pillarName];
-            if (!pillarData) return;
-
-            let tiersHtml = pillarData.tiers.map(tier => {
-                const featureList = tier.features.map(f => `<li class="flex items-start space-x-2 text-white/80 text-sm">
-                    <svg class="w-4 h-4 mt-1 flex-shrink-0 ${colorClass.replace('text', 'text')}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>${f}</span>
-                </li>`).join('');
-
-                return `
-                    <div class="glass-container rounded-xl p-6 flex flex-col justify-between h-full border-2 border-white/10 hover:border-neon-cyan transition duration-300 transform hover:scale-[1.02]">
-                        <div class="space-y-4">
-                            <h4 class="text-2xl font-extrabold ${colorClass}">${tier.name}</h4>
-                            <p class="text-4xl font-extrabold text-white mb-2 tracking-tighter">${tier.price}</p>
-                            <p class="text-sm text-white/60 font-semibold uppercase">${tier.focus}</p>
-                            <ul class="space-y-3 pt-4 border-t border-white/10">
-                                ${featureList}
-                            </ul>
-                        </div>
-                        <button class="w-full ${bgClass.replace('bg', 'bg')}/90 text-charcoal font-bold py-3 mt-6 rounded-lg transition duration-300 transform hover:bg-neon-cyan hover:text-charcoal">
-                            Start ${tier.name}
-                        </button>
-                    </div>
-                `;
-            }).join('');
-
-            const container = document.createElement('div');
-            container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-md overflow-y-auto py-10';
-
-            container.innerHTML = `
-                <div class="glass-container p-8 rounded-xl max-w-6xl mx-4 text-center border-2 border-neon-cyan/70 shadow-2xl transform scale-95 transition-all duration-300 w-full">
-                    <h3 class="text-4xl font-extrabold text-white border-b border-electric-blue/50 pb-4 mb-8">
-                        Subscription Tiers: <span class="${colorClass}">${pillarName}</span>
-                    </h3>
-                    <p class="text-lg text-white/70 mb-10">All packages feature **Monthly Recurring Revenue (MRR)** models for seamless scaling.</p>
-                    
-                    <div class="grid md:grid-cols-3 gap-8">
-                        ${tiersHtml}
-                    </div>
-
-                    <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan hover:text-charcoal transition duration-300 text-sm mt-8" onclick="this.closest('.fixed').remove()">
-                        Close Tiers View
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(container);
-
-            // Animate in
-            setTimeout(() => {
-                 container.querySelector('div').classList.remove('scale-95');
-            }, 10);
+        // Placeholder for old showServiceTiers function - now unused
+        function showServiceTiers() { 
+            // This function is no longer used as the content is now inline HTML
+            alert('Pricing tiers are now displayed directly on the page under the "Build Your Digital Backbone" section.');
         }
+
+        // --- Billing Toggle Logic (moved to run after DOM is fully loaded) ---
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initialize icons for the new pricing section
+            if (typeof lucide !== 'undefined') {
+                 lucide.createIcons();
+            }
+
+            // Billing toggle logic
+            const btn = document.getElementById('billSwitch');
+            const knob = document.getElementById('knob');
+            const prices = document.querySelectorAll('.price');
+            let annual = false;
+
+            const format = (n) => `$${n}`;
+
+            const render = () => {
+                prices.forEach(p => {
+                    const m = p.getAttribute('data-m');
+                    const a = p.getAttribute('data-a');
+                    // Price is displayed as monthly (m) or annual (a)
+                    p.textContent = annual ? format(a) : format(m); 
+                });
+            };
+
+            if (btn && knob) {
+                btn.addEventListener('click', () => {
+                    annual = !annual;
+                    // Move the knob between Monthly (0.25rem) and Annual (2.25rem)
+                    knob.style.transform = annual ? 'translateX(2.25rem)' : 'translateX(0.25rem)';
+                    render();
+                });
+
+                // Initial setup
+                knob.style.transform = 'translateX(0.25rem)';
+                render();
+            }
+        });
     </script>
 </body>
 </html>
