@@ -795,9 +795,16 @@
                         </p>
                     </div>
                     
-                    <form onsubmit="event.preventDefault(); alert('Thank you for connecting with codeAmani! We will be in touch shortly.')" class="max-w-lg mx-auto space-y-4 glass-container p-8 rounded-xl">
-                        <input type="email" placeholder="Your Professional Email" required class="w-full p-4 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition text-base">
-                        <textarea placeholder="Your Vision and Project Scope" rows="3" required class="w-full p-4 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition text-base"></textarea>
+                    <form action="mailto:info+web@codeamani.com" method="post" enctype="text/plain" class="max-w-lg mx-auto space-y-4 glass-container p-8 rounded-xl">
+                        <!-- Changed type to 'text' and added 'name' attribute for proper mailto handling -->
+                        <input type="text" name="Email" placeholder="Your Professional Email" required class="w-full p-4 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition text-base">
+                        
+                        <!-- Added 'name' attribute for proper mailto handling -->
+                        <textarea name="Project_Scope" placeholder="Your Vision and Project Scope" rows="3" required class="w-full p-4 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition text-base"></textarea>
+                        
+                        <!-- Added hidden subject field -->
+                        <input type="hidden" name="subject" value="New Lead: Digital Architecture Inquiry from Website">
+                        
                         <button type="submit" class="w-full bg-neon-cyan text-charcoal text-lg font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-xl shadow-neon-cyan/30">
                             Secure Your Digital Future
                         </button>
@@ -1298,7 +1305,7 @@
             document.getElementById('review-submission-page').classList.add('hidden');
             window.history.pushState({}, '', window.location.pathname); // Clean URL
             // Scroll to the reviews section after submission
-            document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+            // REMOVED: document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
         }
 
         // Submission function modified to show a confirmation message instead of connecting to Firestore
