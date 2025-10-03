@@ -41,10 +41,17 @@
                         'glow': {
                             '0%, 100%': { 'text-shadow': '0 0 5px rgba(0, 240, 255, 0.5)' },
                             '50%': { 'text-shadow': '0 0 15px rgba(0, 240, 255, 0.8), 0 0 25px rgba(0, 240, 255, 0.6)' },
+                        },
+                        // NEW: Ken Burns animation keyframes
+                        'kenburns': {
+                            '0%': { transform: 'scale(1) translate(0, 0)' },
+                            '100%': { transform: 'scale(1.15) translate(5%, -5%)' },
                         }
                     },
                     animation: {
                         'text-glow': 'glow 3s ease-in-out infinite',
+                        // NEW: Apply Ken Burns animation
+                        'kenburns': 'kenburns 30s ease-in-out infinite alternate',
                     },
                     boxShadow: {
                         'glow': '0 0 0 1px rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.35)'
@@ -63,6 +70,18 @@
             color: #E0E0E0;
             line-height: 1.6;
         }
+
+        /* ------------------------------------------------------------------ */
+        /* KEN BURNS BACKGROUND STYLING (NEW) */
+        /* ------------------------------------------------------------------ */
+        .kenburns-background {
+            /* Placeholder Image URL: Abstract Data/Tech */
+            background-image: url('https://placehold.co/1920x1080/1a1a1a/00F0FF?text=CodeAmani+Digital+Architecture');
+            background-size: cover;
+            background-position: center center;
+            animation: kenburns 30s ease-in-out infinite alternate;
+        }
+
 
         /* ------------------------------------------------------------------ */
         /* GLASSMORHPISM EFFECT DEFINITION */
@@ -236,6 +255,40 @@
             box-shadow: 0 0 25px 5px rgba(0, 240, 255, 0.6); /* Neon glow on hover */
             border-color: #00F0FF;
         }
+        
+        /* NEW Counter styling for the Hero Section */
+        .counter-box {
+            background: rgba(40, 40, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        /* Reviews Carousel Styling */
+        .review-carousel {
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        .review-carousel::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .review-card {
+            scroll-snap-align: center;
+            flex-shrink: 0;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .review-card {
+                width: calc(50% - 1.5rem); /* Two cards per view minus gap */
+            }
+        }
+        @media (min-width: 1024px) {
+            .review-card {
+                width: calc(33.333333% - 1.333333rem); /* Three cards per view minus gap */
+            }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-500/30 selection:text-white">
@@ -256,7 +309,11 @@
                 </div>
                 <!-- Templates -->
                 <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
-                    <a href="#templates" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('main-content')">Templates</a>
+                    <a href="#templates" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('template-catalog')">Templates</a>
+                </div>
+                <!-- Reviews (NEW) -->
+                <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
+                    <a href="#reviews" class="block py-2 px-5 text-white/70 hover:text-neon-cyan transition duration-300 font-medium tracking-wider" onclick="showSection('main-content')">Reviews</a>
                 </div>
                 <!-- Connect -->
                 <div class="inner-glass-container rounded-full transition duration-300 hover:border-electric-blue">
@@ -265,7 +322,7 @@
             </div>
 
             <!-- Desktop CTA Button -->
-            <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-xl hidden md:block" onclick="showSection('main-content')">
+            <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-xl hidden md:block" onclick="showSection('template-catalog')">
                 Explore The Future
             </a>
             
@@ -282,15 +339,20 @@
                 <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
                     <a href="#digital-architecture" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Services</a>
                 </div>
+                <!-- Templates (Updated) -->
                 <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
-                    <a href="#templates" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Templates</a>
+                    <a href="#" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('template-catalog')">Templates</a>
+                </div>
+                 <!-- Reviews (NEW) -->
+                <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
+                    <a href="#reviews" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Reviews</a>
                 </div>
                 <div class="inner-glass-container rounded-lg transition duration-300 hover:border-electric-blue" onclick="toggleMobileMenu()">
                     <a href="#contact" class="block py-3 px-4 text-white hover:text-neon-cyan font-medium tracking-wider" onclick="showSection('main-content')">Connect</a>
                 </div>
                 
-                <!-- Mobile CTA -->
-                <a href="#templates" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-3 px-4 rounded-lg transition duration-300 shadow-xl text-center mt-2" onclick="showSection('main-content'); toggleMobileMenu();">
+                <!-- Mobile CTA (Updated) -->
+                <a href="#" class="bg-electric-blue hover:bg-neon-cyan hover:text-charcoal text-white font-bold py-3 px-4 rounded-lg transition duration-300 shadow-xl text-center mt-2" onclick="showSection('template-catalog'); toggleMobileMenu();">
                     Explore The Future
                 </a>
             </div>
@@ -304,15 +366,23 @@
         
             <!-- 1. HERO SECTION - Breathtaking Introduction -->
             <section id="hero" class="relative min-h-screen flex items-center justify-center text-center p-6 pt-24 overflow-hidden">
-                <!-- Background particle effect (simulated via CSS/Tailwind gradients) -->
-                <div class="absolute inset-0 bg-charcoal opacity-90"></div>
-                <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle at 50% 50%, #4060FF 0%, transparent 40%), radial-gradient(circle at 10% 90%, #00F0FF 0%, transparent 50%); background-size: cover;"></div>
-
+                <!-- Ken Burns Animated Background (NEW) -->
+                <div class="absolute inset-0 kenburns-background z-0"></div>
+                <!-- Stronger Dark Overlay for Readability (NEW) -->
+                <div class="absolute inset-0 bg-black opacity-70 z-0"></div>
 
                 <div class="max-w-5xl z-10 space-y-8 reveal-on-scroll glass-container rounded-xl p-8 sm:p-12">
                     
                     <!-- Wrapper for Title and Text Area -->
                     <div class="space-y-4">
+
+                        <!-- NEW COUNTER WIDGET -->
+                        <div id="counter-display" class="counter-box rounded-xl max-w-xs mx-auto mb-6">
+                            <span id="client-counter" class="text-4xl sm:text-5xl font-extrabold text-neon-cyan block leading-none">0</span>
+                            <span class="text-sm sm:text-base text-white/70 block mt-1">Digital Architectures Delivered</span>
+                        </div>
+                        <!-- END COUNTER WIDGET -->
+
                         <!-- Title Wrapper (Existing Inner Glass Container) -->
                         <div class="inner-glass-container rounded-lg p-6 sm:p-8">
                             <h1 class="text-6xl sm:text-7xl lg:text-9xl font-extrabold tracking-tighter leading-none animate-text-glow">
@@ -678,6 +748,39 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- 4. REVIEWS SECTION - Dynamic Carousel with Firestore (NEW) -->
+            <section id="reviews" class="py-16 sm:py-24 bg-gray-900 reveal-on-scroll">
+                <div class="max-w-7xl mx-auto px-6">
+                    <!-- Wrapper for Section Title -->
+                    <div class="inner-glass-container rounded-lg p-4 sm:p-8 mb-10 sm:mb-16 max-w-5xl mx-auto">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-neon-cyan">
+                            Client Success Stories
+                        </h2>
+                    </div>
+                    
+                    <div id="review-carousel-wrapper" class="relative overflow-hidden">
+                        <div id="reviews-container" class="review-carousel flex space-x-6 pb-4">
+                            <!-- Reviews will be injected here by JavaScript -->
+                            <div class="text-center text-white/50 w-full p-8">Loading dynamic client testimonials...</div>
+                        </div>
+
+                         <!-- Navigation Dots (Optional, for visual cue) -->
+                        <div id="carousel-dots" class="flex justify-center mt-6 space-x-2">
+                            <!-- Dots will be injected here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Submission link hint (for your reference) -->
+                    <p class="mt-12 text-center text-slate-400 text-sm">
+                        *To submit a new review, clients use a private link like: 
+                        <span class="text-neon-cyan font-mono">
+                            [yourdomain.com]/?mode=review
+                        </span> 
+                    </p>
+                </div>
+            </section>
+
 
             <!-- 5. CONTACT/FOOTER SECTION (Form is a Glass container) -->
             <section id="contact" class="py-16 bg-black reveal-on-scroll">
@@ -739,6 +842,7 @@
                                 <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
                                     <p class="text-lg font-bold">Apex Analytics</p>
                                     <span class="text-xs text-purple-400">Data Visualization / Metrics</span>
+                                
                                 </div>
                             </div>
                         </div>
@@ -761,6 +865,7 @@
                                 <div class="absolute inset-0 flex flex-col justify-end p-4 text-white">
                                     <p class="text-lg font-bold">Aura CRM Portal</p>
                                     <span class="text-xs text-neon-cyan">User-Centric / Team Dashboard</span>
+                                
                                 </div>
                             </div>
                         </div>
@@ -929,8 +1034,299 @@
         </footer>
     </main>
 
+    <!-- 7. REVIEW SUBMISSION PAGE (Hidden by default) - Simulates the unique link -->
+    <section id="review-submission-page" class="fixed inset-0 z-[100] hidden bg-black flex items-center justify-center p-6">
+        <div class="max-w-lg w-full glass-container p-8 rounded-xl space-y-6">
+            <h2 class="text-3xl font-extrabold text-neon-cyan border-b border-neon-cyan/50 pb-3">Submit Your Success Story</h2>
+            <p class="text-white/80">Thank you for helping us showcase the power of codeAmani Architecture. Your feedback is highly valued.</p>
+            
+            <form id="review-form" onsubmit="event.preventDefault(); submitReview();" class="space-y-4">
+                <div>
+                    <label for="reviewer-name" class="block text-sm font-medium text-white/70 mb-1">Your Name / Title</label>
+                    <input type="text" id="reviewer-name" required class="w-full p-3 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition" placeholder="e.g., Jane Doe, CEO of Alpha Corp">
+                </div>
+                <div>
+                    <label for="review-text" class="block text-sm font-medium text-white/70 mb-1">Your Review</label>
+                    <textarea id="review-text" rows="4" required class="w-full p-3 bg-charcoal/50 border border-neon-cyan/30 rounded-lg text-white/80 focus:ring-2 focus:ring-neon-cyan focus:outline-none transition" placeholder="Tell us how codeAmani helped your business stand out..."></textarea>
+                </div>
+                
+                <button type="submit" class="w-full bg-electric-blue text-white text-lg font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.02] shadow-xl shadow-electric-blue/40">
+                    Submit Review
+                </button>
+                <button type="button" onclick="hideReviewForm()" class="w-full text-white/70 hover:text-white mt-2">
+                    Back to Homepage
+                </button>
+            </form>
+            <div id="review-status" class="mt-4 text-center text-sm hidden"></div>
+        </div>
+    </section>
+    
+
     <!-- Modal and Script Section -->
-    <script>
+    <script type="module">
+        // Import necessary Firebase functions (COMMENTED OUT TO DISABLE FIREBASE)
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        // import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        // import { getFirestore, collection, addDoc, onSnapshot, query, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase and App variables
+        let db, auth;
+        let reviewsUnsubscribe;
+        const REVIEW_COLLECTION = 'reviews';
+        const APP_ID = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const FIREBASE_CONFIG = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+
+
+        // ------------------------------------------------------------------
+        // FIREBASE INITIALIZATION AND REVIEW LOGIC (DISABLED)
+        // ------------------------------------------------------------------
+        
+        // async function initFirebase() { /* ... DISABLED ... */ }
+        function initFirebase() { console.log("Firebase is disabled for static review testing."); }
+
+
+        // UPDATED SEED DATA WITH USER-PROVIDED REVIEWS
+        const SEED_DATA = [
+            { 
+                id: 'static1', 
+                name: 'Michelle, Startup Founder', 
+                text: "They go above and beyond. I ordered a logo and received extra versions and social media mockups at no extra cost. The value exceeded expectations.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 1
+            },
+            { 
+                id: 'static2', 
+                name: 'Faith, FAY Marketing', 
+                text: "Creativity meets precision. They crafted our social media content and strategy. Every post is visually strong and on brand which boosts engagement and trust.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 2
+            },
+            { 
+                id: 'static3', 
+                name: 'Kevin, Top Agency Buyer', 
+                text: "Exceptional web design. I bought a template from CodeAmani. It is fully responsive, easy to edit, and looks like it came from a top agency.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 3
+            },
+            { 
+                id: 'static4', 
+                name: 'Coach Daniel, St Anthony High School', 
+                text: "Smart solutions and fast delivery. They built a dashboard for managing active sports rosters for St Anthony High Solidarity Boys football and hockey. It saves coaches hours every week.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 4
+            },
+            { 
+                id: 'static5', 
+                name: 'Ashley, CodeLink Digital', 
+                text: "Professionalism at its best. From web design to marketing automation CodeAmani handled it all with care. Every project landed at a high standard.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 5
+            },
+            { 
+                id: 'static6', 
+                name: 'Mark, SmallBiz Owner', 
+                text: "Turnaround time is unbelievable. I shared a rough pen sketch and in about 30 minutes they delivered a working web plugin that looked and worked even better than I imagined.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 6
+            },
+            { 
+                id: 'static7', 
+                name: 'Nia, Creative Studio', 
+                text: "Designs that speak for themselves. I ordered business cards and business templates. The branding feels premium across everything and the layouts are clean and creative.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 7
+            },
+            { 
+                id: 'static8', 
+                name: 'Brian, RealEstateKE', 
+                text: "A touch of genius. CodeAmani brought our real estate vision to life with a site that feels modern, fast, and professional. Every page looks amazing and works flawlessly.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 8
+            },
+            { 
+                id: 'static9', 
+                name: 'Teresia, T&T Serenity Care', 
+                text: "Highly recommended. They set up our computer infrastructure and automation. Everything runs smoothly and our team saves time every day.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 9
+            },
+            { 
+                id: 'static10', 
+                name: 'Lydia, Business Owner', 
+                text: "Fast, efficient, and reliable. Delivery speed is off the chain. The team responds fast and the turnaround on design or tech requests is truly impressive.", 
+                rating: 5, 
+                timestamp: Date.now() - 86400000 * 10
+            },
+        ];
+        
+        // This now calls the render function directly with the static data
+        function loadReviews() {
+            // Simulate the loading delay
+            setTimeout(() => {
+                renderReviews(SEED_DATA);
+            }, 500);
+        }
+
+        // This function is no longer needed as we are using the static list above
+        // async function seedReviews() { /* ... DISABLED ... */ } 
+
+
+        function renderReviews(reviews) {
+            const container = document.getElementById('reviews-container');
+            const dotsContainer = document.getElementById('carousel-dots');
+            
+            if (!container) return;
+
+            if (reviews.length === 0) {
+                container.innerHTML = '<p class="text-center text-white/50 w-full p-8">Be the first to leave a review!</p>';
+                dotsContainer.innerHTML = '';
+                return;
+            }
+            
+            // 1. Generate Review Cards HTML
+            const reviewsHtml = reviews.map((review, index) => {
+                const stars = '★'.repeat(review.rating || 5); // Default 5 stars for luxury brand
+                
+                return `
+                    <div id="review-${index}" class="review-card glass-container rounded-xl p-8 space-y-4 shadow-lg flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="text-xl text-neon-cyan">${stars}</div>
+                            <p class="text-lg italic text-white/90 leading-relaxed">"${review.text}"</p>
+                        </div>
+                        <div class="pt-4 border-t border-white/10">
+                            <p class="font-bold text-white">${review.name}</p>
+                            <p class="text-xs text-white/50">Delivered by codeAmani Solutions</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = reviewsHtml;
+            
+            // 2. Generate Carousel Dots
+            dotsContainer.innerHTML = reviews.map((_, index) => `
+                <button data-slide="${index}" class="w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-neon-cyan transition duration-300" onclick="goToSlide(${index})"></button>
+            `).join('');
+
+            // 3. Set up Auto-scrolling and Dot activation
+            setupReviewCarousel();
+        }
+
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function setupReviewCarousel() {
+            const container = document.getElementById('reviews-container');
+            if (!container) return;
+
+            // Clear previous interval if any
+            if (slideInterval) clearInterval(slideInterval);
+
+            const cards = container.querySelectorAll('.review-card');
+            if (cards.length <= 1) return;
+
+            const totalSlides = cards.length;
+
+            const updateDots = (index) => {
+                document.querySelectorAll('#carousel-dots button').forEach((dot, i) => {
+                    dot.classList.remove('bg-neon-cyan', 'w-4');
+                    dot.classList.add('bg-white/30', 'w-2.5');
+                    if (i === index) {
+                        dot.classList.remove('bg-white/30');
+                        dot.classList.add('bg-neon-cyan', 'w-4');
+                    }
+                });
+            };
+            
+            const advanceSlide = () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                cards[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                updateDots(currentSlide);
+            };
+
+            // Set the scroll snap listener for manual scrolling
+            container.addEventListener('scroll', () => {
+                // Determine the closest slide index based on scroll position
+                let newIndex = 0;
+                for (let i = 0; i < totalSlides; i++) {
+                    const card = cards[i];
+                    const rect = card.getBoundingClientRect();
+                    // If the card's left edge is close to the container's left edge (accounting for padding/gap)
+                    if (rect.left >= 0 && rect.left <= window.innerWidth / 4) {
+                        newIndex = i;
+                        break;
+                    }
+                }
+                if (currentSlide !== newIndex) {
+                    currentSlide = newIndex;
+                    updateDots(currentSlide);
+                }
+            }, { passive: true });
+
+
+            // Set up auto-advance
+            slideInterval = setInterval(advanceSlide, 7000); // Auto-advance every 7 seconds
+
+            // Function to jump to a specific slide (used by dots)
+            window.goToSlide = (index) => {
+                clearInterval(slideInterval); // Stop auto-advance temporarily
+                currentSlide = index;
+                cards[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                updateDots(currentSlide);
+                
+                // Restart auto-advance after a short delay
+                slideInterval = setInterval(advanceSlide, 7000);
+            };
+
+            // Initial dot activation
+            updateDots(currentSlide);
+        }
+
+        // ------------------------------------------------------------------
+        // REVIEW SUBMISSION FORM LOGIC (SUBMISSION IS NON-FUNCTIONAL)
+        // ------------------------------------------------------------------
+
+        function showReviewForm() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('template-catalog').classList.add('hidden');
+            document.getElementById('catalog-footer').classList.add('hidden');
+            document.getElementById('review-submission-page').classList.remove('hidden');
+        }
+
+        function hideReviewForm() {
+            document.getElementById('main-content').classList.remove('hidden');
+            document.getElementById('review-submission-page').classList.add('hidden');
+            window.history.pushState({}, '', window.location.pathname); // Clean URL
+            // Scroll to the reviews section after submission
+            document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Submission function modified to show a confirmation message instead of connecting to Firestore
+        async function submitReview() {
+            const name = document.getElementById('reviewer-name').value.trim();
+            const statusDiv = document.getElementById('review-status');
+
+            if (!name) {
+                statusDiv.textContent = "Please fill out both fields.";
+                statusDiv.classList.remove('hidden', 'text-emerald-400');
+                statusDiv.classList.add('text-rose-400');
+                return;
+            }
+
+            statusDiv.textContent = "Submission success! (Note: Firestore connection is currently disabled.)";
+            statusDiv.classList.remove('hidden', 'text-rose-400');
+            statusDiv.classList.add('text-emerald-400');
+
+            document.getElementById('review-form').reset();
+            setTimeout(hideReviewForm, 3000);
+        }
+        
+        window.submitReview = submitReview;
+
+
+        // ------------------------------------------------------------------
+        // CORE APP FUNCTIONS (Preserved/Updated)
+        // ------------------------------------------------------------------
         
         // NEW MOBILE TOGGLE FUNCTION
         function toggleMobileMenu() {
@@ -950,134 +1346,67 @@
                 button.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
             }
         }
+        window.toggleMobileMenu = toggleMobileMenu; // Expose for HTML buttons
         
         // --- View Switching Logic ---
         function showSection(sectionId) {
             const mainContent = document.getElementById('main-content');
             const catalog = document.getElementById('template-catalog');
             const catalogFooter = document.getElementById('catalog-footer');
+            const reviewForm = document.getElementById('review-submission-page');
+
+            mainContent.classList.add('hidden');
+            catalog.classList.add('hidden');
+            catalogFooter.classList.add('hidden');
+            reviewForm.classList.add('hidden'); // Hide form initially
 
             if (sectionId === 'template-catalog') {
-                mainContent.classList.add('hidden');
                 catalog.classList.remove('hidden');
                 catalogFooter.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
+            } else if (sectionId === 'main-content') {
                 mainContent.classList.remove('hidden');
-                catalog.classList.add('hidden');
-                catalogFooter.classList.add('hidden');
-                // Optional: Scroll to the top of the main content or a specific section
-                const targetElement = document.getElementById('hero') || document.body;
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+            } 
+            // Note: Review form handled separately by URL param check
 
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                // Ensure we are on the main page before scrolling
-                if (document.getElementById('main-content').classList.contains('hidden')) {
-                     showSection('main-content');
-                }
-                const targetId = this.getAttribute('href');
-                // Ensure scroll happens after section visibility is handled
-                setTimeout(() => {
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }, 100);
-            });
-        });
+        window.showSection = showSection; // Expose for HTML buttons
 
-        // Dynamic Reveal on Scroll Logic
+
+        // Dynamic Reveal on Scroll Logic (Simplified for brevity, maintained in core file)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Check if the element is currently visible in the viewport
                 if (entry.isIntersecting) {
-                    // Add the 'is-visible' class to trigger the CSS transition
                     entry.target.classList.add('is-visible');
-                    // Stop observing once it's revealed
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            // Options for the Intersection Observer
-            rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        });
+        }, { rootMargin: '0px', threshold: 0.1 });
 
-        // Select all elements with the 'reveal-on-scroll' class
-        document.querySelectorAll('.reveal-on-scroll').forEach(element => {
-            observer.observe(element);
-        });
+        // --- Event Listeners and Initializers ---
 
-        // IMPORTANT: Custom alert/notification function to replace window.alert()
-        // This is used for simple messages like form success and now template viewing.
-        function alert(message) {
-            const container = document.createElement('div');
-            container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-70';
-            // UPDATED: Modal now uses glass-container
-            container.innerHTML = `
-                <div class="glass-container p-8 rounded-xl max-w-sm mx-4 text-center border-2 border-neon-cyan/70 shadow-2xl transform scale-95 transition-all duration-300">
-                    <p class="text-xl font-semibold mb-4 text-white">${message}</p>
-                    <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan transition duration-300 text-sm" onclick="this.closest('.fixed').remove()">
-                        Close
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(container);
-
-            // Animate in
-            setTimeout(() => {
-                 container.querySelector('div').classList.remove('scale-95');
-            }, 10);
-        }
-
-        // Function to display detailed client product information in a custom modal (UPDATED to use glass-container)
-        function showClientProductDetails(clientName, productDescription, colorClass, link = null) {
-            const container = document.createElement('div');
-            container.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm';
-            
-            // Generate the Live Demo button HTML only if a link is provided
-            const liveDemoButton = link ? `
-                <a href="${link}" target="_blank" class="live-demo-btn bg-neon-cyan text-charcoal py-2 px-6 rounded-full font-bold hover:bg-electric-blue hover:text-white transition duration-300 text-sm mt-4 inline-flex items-center space-x-2">
-                    <span>View Live Demo</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-2h6m0 0l-3-3m3 3l-3 3"></path></svg>
-                </a>
-            ` : '';
-
-            // UPDATED: Modal now uses glass-container
-            container.innerHTML = `
-                <div class="glass-container p-8 sm:p-12 rounded-xl max-w-lg mx-4 text-left border-2 border-neon-cyan/70 shadow-2xl transform scale-95 transition-all duration-300 space-y-4">
-                    <h3 class="2xl font-extrabold text-white border-b border-electric-blue/50 pb-2">Client Solution: <span class="${colorClass}">${clientName}</span></h3>
-                    <p class="text-lg text-white/80">${productDescription}</p>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mt-6 pt-4 border-t border-white/10">
-                        ${liveDemoButton}
-                        <button class="bg-electric-blue text-white py-2 px-6 rounded-full hover:bg-neon-cyan hover:text-charcoal transition duration-300 text-sm mt-4 sm:mt-0" onclick="this.closest('.fixed').remove()">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(container);
-
-            // Animate in
-            setTimeout(() => {
-                 container.querySelector('div').classList.remove('scale-95');
-            }, 10);
-        }
-        
-        // Placeholder for old showServiceTiers function - now unused
-        function showServiceTiers() { 
-            // This function is no longer used as the content is now inline HTML
-            alert('Pricing tiers are now displayed directly on the page under the "Build Your Digital Backbone" section.');
-        }
-
-        // --- Billing Toggle Logic (moved to run after DOM is fully loaded) ---
         window.addEventListener('DOMContentLoaded', () => {
-            // Initialize icons for the new pricing section
+            // Check for review submission mode in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('mode') === 'review') {
+                showReviewForm();
+            } else {
+                // Ensure main content is visible if no special mode is active
+                document.getElementById('main-content').classList.remove('hidden');
+            }
+            
+            // Initialization steps
+            initFirebase(); // Only runs console.log now
+
+            // Load reviews using the new static loader
+            loadReviews();
+
+            // Set up scroll observer
+            document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Initialize Lucide icons
             if (typeof lucide !== 'undefined') {
                  lucide.createIcons();
             }
@@ -1094,7 +1423,6 @@
                 prices.forEach(p => {
                     const m = p.getAttribute('data-m');
                     const a = p.getAttribute('data-a');
-                    // Price is displayed as monthly (m) or annual (a)
                     p.textContent = annual ? format(a) : format(m); 
                 });
             };
@@ -1102,16 +1430,57 @@
             if (btn && knob) {
                 btn.addEventListener('click', () => {
                     annual = !annual;
-                    // Move the knob between Monthly (0.25rem) and Annual (2.25rem)
                     knob.style.transform = annual ? 'translateX(2.25rem)' : 'translateX(0.25rem)';
                     render();
                 });
-
-                // Initial setup
                 knob.style.transform = 'translateX(0.25rem)';
                 render();
             }
+            
+            // Start the counter animation (using the logic from the previous step)
+            function startCounterAnimation() {
+                const counterElement = document.getElementById('client-counter');
+                if (!counterElement) return;
+
+                const targetNumber = 250;
+                let currentNumber = 0;
+                const duration = 1500;
+                const step = Math.ceil(targetNumber / (duration / 10));
+
+                const interval = setInterval(() => {
+                    currentNumber += step;
+                    if (currentNumber >= targetNumber) {
+                        currentNumber = targetNumber;
+                        clearInterval(interval);
+                        counterElement.textContent = currentNumber.toLocaleString() + '+';
+                    } else {
+                        counterElement.textContent = currentNumber.toLocaleString();
+                    }
+                }, 10);
+            }
+            startCounterAnimation();
+
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Only prevent default if it's not the templates link (which uses showSection)
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#templates' && targetId !== '#') {
+                         e.preventDefault();
+
+                        // We must ensure 'main-content' is visible if a deep link is clicked
+                        showSection('main-content'); 
+                        setTimeout(() => {
+                            document.querySelector(targetId).scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }, 100);
+                    }
+                });
+            });
         });
+
     </script>
 </body>
 </html>
