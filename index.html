@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Code Amani Solutions | High-End Dynamic Templates</title>
+  <title>codeAmani Labs </title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
     content="Code Amani Labs LLC is an online SaaS and digital solutions company providing platforms, websites, government contracting solutions, digital tools, QR utilities, identity workflows, rental application suites, and secure data handling."
   />
   
+  <!-- Favicon (Browser Tab Icon) -->
+  <link rel="icon" href="assets/codeamani-labs-shield-logo.png" type="image/png" />
+
   <!-- Design System CSS (Linked to 'design/' folder) -->
   <link rel="stylesheet" href="design/ca-tokens.css" />
   <link rel="stylesheet" href="design/ca-core.css" />
@@ -25,20 +28,27 @@
   <header class="ca-nav">
     <nav class="ca-nav-inner flex justify-between items-center">
       
-      <!-- Logo Snippet -->
-      <div class="flex items-center gap-3 ca-nav-logo">
-          <img
-              src="assets/codeAmani Labs Logo.png"
-              alt="Code Amani Labs logo"
-              class="h-10 w-10 rounded-full u-glass-soft"
-          />
-          <div class="inner-glass-container rounded-lg px-3 py-1 transition duration-300 hover:border-neon-cyan">
-              <a href="#hero-main"
-                 class="text-2xl font-extrabold tracking-tight hover:opacity-80 transition text-white"
-                 onclick="showSection('main-content')">
-                 codeAmani
-              </a>
-          </div>
+      <!-- Logo Snippet Updated -->
+      <div class="flex items-center gap-2 ca-nav-logo">
+          <!-- Large Shield Logo (Left) -->
+          <a href="#hero-main" onclick="showSection('main-content')" class="block hover:scale-105 transition-transform duration-300">
+              <img
+                  src="assets/codeamani-labs-shield-logo.png"
+                  alt="Code Amani Shield"
+                  class="h-14 w-auto object-contain drop-shadow-lg"
+              />
+          </a>
+          
+          <!-- Graphic Text Logo (Right) - Replaces plain text -->
+          <a href="#hero-main" 
+             onclick="showSection('main-content')"
+             class="block hover:opacity-90 transition duration-300">
+              <img
+                  src="assets/codeamani-labs-text-logo.png"
+                  alt="codeAmani"
+                  class="h-8 w-auto object-contain mt-1"
+              />
+          </a>
       </div>
 
       <!-- Existing Nav Links (Preserved structure with Tailwind classes) -->
