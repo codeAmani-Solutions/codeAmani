@@ -15,8 +15,7 @@
   <!-- Design System CSS (Linked to 'design/' folder) -->
   <link rel="stylesheet" href="design/ca-tokens.css" />
   <link rel="stylesheet" href="design/ca-core.css" />
-  <link rel="stylesheet" href="style.css" />
-
+  
   <!-- Tailwind CSS (Required for layout utilities) -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -29,24 +28,26 @@
     <nav class="ca-nav-inner flex justify-between items-center">
       
       <!-- Logo Snippet Updated -->
-      <div class="flex items-center gap-2 ca-nav-logo">
+      <div class="flex items-center gap-4 ca-nav-logo h-full">
           <!-- Large Shield Logo (Left) -->
-          <a href="#hero-main" onclick="showSection('main-content')" class="block hover:scale-105 transition-transform duration-300">
+          <!-- Increased to h-20 for prominence -->
+          <a href="#hero-main" onclick="showSection('main-content')" class="block hover:scale-105 transition-transform duration-300 shrink-0">
               <img
                   src="assets/codeamani-labs-shield-logo.png"
                   alt="Code Amani Shield"
-                  class="h-14 w-auto object-contain drop-shadow-lg"
+                  class="h-20 w-auto object-contain drop-shadow-lg"
               />
           </a>
           
-          <!-- Graphic Text Logo (Right) - Replaces plain text -->
+          <!-- Graphic Text Logo (Right) -->
+          <!-- Increased to h-12, removed mt-1 for perfect vertical centering -->
           <a href="#hero-main" 
              onclick="showSection('main-content')"
-             class="block hover:opacity-90 transition duration-300">
+             class="block hover:opacity-90 transition duration-300 shrink-0">
               <img
                   src="assets/codeamani-labs-text-logo.png"
                   alt="codeAmani"
-                  class="h-8 w-auto object-contain mt-1"
+                  class="h-20 w-auto object-contain"
               />
           </a>
       </div>
