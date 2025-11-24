@@ -1,375 +1,90 @@
-/* =====================================================================
-   Code Amani Design System – Core Utilities
-   Requires: ca-tokens.css
-   Inspired by iOS 26 Liquid Glass Design
-   ===================================================================== */
+/* =========================================================
+   Code Amani Design Tokens – iOS 26 Liquid Glass
+   Shared across: Main site, QR suite, Apex Waiver
+   ========================================================= */
 
-/* --------------------------------------------------
-   1. App Shell + Background
--------------------------------------------------- */
-.ca-app {
-  min-height: 100vh;
-  font-family: var(--ca-font-sans);
-  color: var(--ca-color-fg-main);
-  background-color: var(--ca-color-bg-base);
-  background-image:
-    var(--ca-gradient-bg-liquid),
-    var(--ca-gradient-blob-blue),
-    var(--ca-gradient-blob-teal),
-    var(--ca-gradient-blob-purple);
-  background-size: cover;
-  background-attachment: fixed;
+:root {
+  /* 1. Color System – Neutrals */
+  --ca-color-bg-base: #020617;         /* App background */
+  --ca-color-bg-elevated: #020617;     /* Behind glass */
+  --ca-color-fg-main: #e5e7eb;
+  --ca-color-fg-muted: #9ca3af;
+  --ca-color-border-soft: rgba(148, 163, 184, 0.45);
+
+  /* 2. Brand Accents (primary = Code Amani core) */
+  --ca-color-accent-primary: #a855f7;       /* Code Amani core tint */
+  --ca-color-accent-primary-soft: rgba(168, 85, 247, 0.35);
+
+  /* Optional secondary accent (used sparingly) */
+  --ca-color-accent-secondary: #4f46e5;
+  --ca-color-accent-secondary-soft: rgba(79, 70, 229, 0.45);
+
+  /* Status colors */
+  --ca-color-success: #22c55e;
+  --ca-color-warning: #eab308;
+  --ca-color-danger: #f97316;
+
+  /* 3. Gradients (Liquid background + accent rays) */
+  --ca-gradient-bg-liquid:
+    radial-gradient(circle at top, #4f46e5 0%, #0f172a 35%, #020617 100%);
+  --ca-gradient-blob-blue: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.16), transparent 55%);
+  --ca-gradient-blob-teal: radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.14), transparent 50%);
+  --ca-gradient-blob-purple: radial-gradient(circle at 80% 0%, rgba(168, 85, 247, 0.18), transparent 55%);
+
+  /* 4. Glass Surfaces */
+  --ca-glass-bg-default: rgba(15, 23, 42, 0.62);   /* main card */
+  --ca-glass-bg-soft: rgba(15, 23, 42, 0.5);       /* softer panels */
+  --ca-glass-bg-strong: rgba(15, 23, 42, 0.78);    /* nav / toolbars */
+  --ca-glass-border: rgba(148, 163, 184, 0.55);
+  --ca-glass-highlight: rgba(255, 255, 255, 0.12);
+
+  --ca-blur-sm: 10px;
+  --ca-blur-md: 18px;
+  --ca-blur-lg: 24px;
+
+  /* 5. Radius – soft, rounded, liquid */
+  --ca-radius-md: 16px;
+  --ca-radius-lg: 24px;
+  --ca-radius-xl: 30px;
+  --ca-radius-pill: 999px;
+
+  /* 6. Elevation / Shadows (soft, not harsh) */
+  --ca-shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.65);
+  --ca-shadow-nav: 0 18px 45px rgba(15, 23, 42, 0.9);
+  --ca-shadow-press: 0 8px 22px rgba(15, 23, 42, 0.75);
+
+  /* 7. Motion / Transitions */
+  --ca-motion-fast: 120ms;
+  --ca-motion-normal: 200ms;
+  --ca-motion-slow: 280ms;
+
+  --ca-ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ca-ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ca-ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* 8. Layout */
+  --ca-layout-max-width: 1120px;
+  --ca-layout-gutter: 1.25rem;
+
+  /* 9. Typography */
+  --ca-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  --ca-font-size-base: 16px;
+  --ca-font-size-body: 0.95rem;
+  --ca-font-size-label: 0.78rem;
+  --ca-font-size-h1: 2.4rem;
+  --ca-font-size-h2: 1.5rem;
+  --ca-font-size-h3: 1.1rem;
 }
 
-.ca-container {
-  width: 100%;
-  max-width: var(--ca-layout-max-width);
-  margin: 0 auto;
-  padding-inline: var(--ca-layout-gutter);
+/* Brand overrides – example: QR suite */
+[data-brand="qr-suite"] {
+  --ca-color-accent-primary: #22c55e;
+  --ca-color-accent-primary-soft: rgba(34, 197, 94, 0.3);
 }
 
-/* --------------------------------------------------
-   2. Liquid Glass Surfaces
--------------------------------------------------- */
-
-.u-glass {
-  background: var(--ca-glass-bg-default);
-  border-radius: var(--ca-radius-lg);
-  border: 1px solid var(--ca-glass-border);
-  backdrop-filter: blur(var(--ca-blur-md)) saturate(140%);
-  -webkit-backdrop-filter: blur(var(--ca-blur-md)) saturate(140%);
-  box-shadow: var(--ca-shadow-soft);
-  position: relative;
-  overflow: hidden;
+/* Brand overrides – example: Apex Waiver */
+[data-brand="apex-waiver"] {
+  --ca-color-accent-primary: #f97316;
+  --ca-color-accent-primary-soft: rgba(249, 115, 22, 0.35);
 }
-
-.u-glass-soft {
-  background: var(--ca-glass-bg-soft);
-  border-radius: var(--ca-radius-md);
-  backdrop-filter: blur(var(--ca-blur-sm));
-}
-
-.u-glass-strong {
-  background: var(--ca-glass-bg-strong);
-  border-radius: var(--ca-radius-xl);
-  backdrop-filter: blur(var(--ca-blur-lg));
-  box-shadow: var(--ca-shadow-nav);
-}
-
-/* Highlight sheen */
-.u-glass::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(
-    circle at top right,
-    var(--ca-color-accent-primary-soft),
-    transparent 60%
-  );
-  opacity: 0.14;
-  pointer-events: none;
-}
-
-/* --------------------------------------------------
-   3. Cards, Panels & Pill Components
--------------------------------------------------- */
-
-.ca-card {
-  padding: 1.2rem 1.3rem;
-  border-radius: var(--ca-radius-lg);
-  background: var(--ca-glass-bg-default);
-  border: 1px solid var(--ca-glass-border);
-  backdrop-filter: blur(var(--ca-blur-md)) saturate(140%);
-  -webkit-backdrop-filter: blur(var(--ca-blur-md)) saturate(140%);
-  box-shadow: var(--ca-shadow-soft);
-  color: var(--ca-color-fg-muted);
-  position: relative;
-  overflow: hidden;
-}
-
-.ca-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: var(--ca-radius-pill);
-  border: 1px solid var(--ca-color-border-soft);
-  background: radial-gradient(
-    circle at top left,
-    rgba(148, 163, 184, 0.25),
-    rgba(15, 23, 42, 0.8)
-  );
-  font-size: var(--ca-font-size-label);
-  color: var(--ca-color-fg-muted);
-}
-
-/* --------------------------------------------------
-   4. Liquid Motion Utilities (iOS 26 interaction)
--------------------------------------------------- */
-
-.u-animate {
-  transition-property: 
-    transform, box-shadow, background, border-color, opacity;
-  transition-duration: var(--ca-motion-normal);
-  transition-timing-function: var(--ca-ease-standard);
-}
-
-.u-animate-soft {
-  transition-timing-function: var(--ca-ease-soft);
-}
-
-.u-animate-snap {
-  transition-timing-function: var(--ca-ease-snap);
-  transition-duration: var(--ca-motion-fast);
-}
-
-/* Hover lift (cards) */
-.u-hover-float:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.8);
-}
-
-/* Tap / press effect */
-.u-press-soft:active {
-  transform: translateY(1px) scale(0.97);
-  box-shadow: var(--ca-shadow-press);
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.9),
-    rgba(15, 23, 42, 0.7)
-  );
-}
-
-/* --------------------------------------------------
-   5. Navigation (Top + Dynamic Shrinking)
-   Matches iOS 26 dynamic toolbars.
--------------------------------------------------- */
-
-.ca-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(var(--ca-blur-md));
-  -webkit-backdrop-filter: blur(var(--ca-blur-md));
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.92),
-    rgba(15, 23, 42, 0.7),
-    transparent
-  );
-  border-bottom: 1px solid rgba(148, 163, 184, 0.32);
-  transition: padding var(--ca-motion-normal) var(--ca-ease-soft),
-              transform var(--ca-motion-normal) var(--ca-ease-soft);
-}
-
-.ca-nav-inner {
-  max-width: var(--ca-layout-max-width);
-  margin: 0 auto;
-  padding: 0.8rem var(--ca-layout-gutter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Shrinking mode on scroll */
-.ca-nav--compact .ca-nav-inner {
-  padding-block: 0.35rem;
-  transform: translateY(-2px);
-}
-
-.ca-nav--compact .ca-nav-logo {
-  transform: scale(0.92);
-  opacity: 0.85;
-}
-
-/* --------------------------------------------------
-   6. Bottom Navigation (iOS 26 Dynamic Tab Bar)
-   This matches: “Liquid Glass tab bars shrink to free space…”
--------------------------------------------------- */
-
-.ca-bottom-nav {
-  position: fixed;
-  bottom: 0.85rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(100% - 1.5rem, 520px);
-  padding: 0.5rem;
-  border-radius: var(--ca-radius-pill);
-  background: var(--ca-glass-bg-strong);
-  border: 1px solid var(--ca-glass-border);
-  backdrop-filter: blur(var(--ca-blur-lg));
-  -webkit-backdrop-filter: blur(var(--ca-blur-lg));
-  box-shadow: var(--ca-shadow-nav);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.ca-bottom-nav__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: var(--ca-font-size-label);
-  gap: 0.2rem;
-  color: var(--ca-color-fg-muted);
-}
-
-.ca-bottom-nav__icon {
-  width: 24px;
-  height: 24px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.8);
-  transition: all var(--ca-motion-normal) var(--ca-ease-soft);
-}
-
-.ca-bottom-nav__item--active .ca-bottom-nav__icon {
-  background: var(--ca-color-accent-primary-soft);
-  color: var(--ca-color-accent-primary);
-}
-
-.ca-bottom-nav__item--active span {
-  color: var(--ca-color-fg-main);
-}
-
-/* --------------------------------------------------
-   7. Button Components
--------------------------------------------------- */
-
-.ca-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--ca-radius-pill);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid transparent;
-  color: white;
-  background: linear-gradient(
-    135deg,
-    var(--ca-color-accent-secondary),
-    var(--ca-color-accent-primary)
-  );
-  box-shadow: 0 14px 32px rgba(79, 70, 229, 0.55);
-  transition: all var(--ca-motion-normal) var(--ca-ease-soft);
-}
-
-.ca-btn:hover {
-  transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.7);
-}
-
-.ca-btn:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: var(--ca-shadow-press);
-}
-
-/* Secondary glass button */
-.ca-btn-secondary {
-  background: rgba(15, 23, 42, 0.78);
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  color: var(--ca-color-fg-main);
-}
-
-/* --------------------------------------------------
-   8. Inputs (Liquid cursor + focus halo)
--------------------------------------------------- */
-
-.ca-input {
-  width: 100%;
-  padding: 0.55rem 0.8rem;
-  border-radius: var(--ca-radius-md);
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  color: var(--ca-color-fg-main);
-  font-size: 0.9rem;
-  backdrop-filter: blur(var(--ca-blur-sm));
-  outline: none;
-  transition: 
-    border-color var(--ca-motion-normal) var(--ca-ease-soft),
-    box-shadow var(--ca-motion-normal) var(--ca-ease-soft),
-    background var(--ca-motion-normal) var(--ca-ease-soft);
-}
-
-.ca-input::placeholder {
-  color: var(--ca-color-fg-muted);
-}
-
-.ca-input:focus {
-  border-color: var(--ca-color-accent-primary);
-  background: rgba(15, 23, 42, 0.92);
-  box-shadow: 0 0 0 2px var(--ca-color-accent-primary-soft);
-}
-
-/* --------------------------------------------------
-   9. In-Place Alerts (iOS 26 behavior) 
-   “alerts expand from the button that triggers them”
--------------------------------------------------- */
-
-.ca-alert {
-  position: absolute;
-  transform-origin: top center;
-  background: var(--ca-glass-bg-strong);
-  border: 1px solid var(--ca-glass-border);
-  padding: 0.9rem 1.1rem;
-  border-radius: var(--ca-radius-md);
-  box-shadow: var(--ca-shadow-soft);
-  backdrop-filter: blur(var(--ca-blur-md));
-  animation: ca-alert-pop var(--ca-motion-normal) var(--ca-ease-snap);
-}
-
-@keyframes ca-alert-pop {
-  0% {
-    opacity: 0;
-    transform: scale(0.88) translateY(-6px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* --------------------------------------------------
-   10. Context Menus (expanded menus)
--------------------------------------------------- */
-
-.ca-context-menu {
-  position: absolute;
-  background: var(--ca-glass-bg-strong);
-  border-radius: var(--ca-radius-lg);
-  border: 1px solid var(--ca-glass-border);
-  backdrop-filter: blur(var(--ca-blur-lg));
-  box-shadow: var(--ca-shadow-nav);
-  padding: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  animation: ca-menu-fade var(--ca-motion-normal) var(--ca-ease-soft);
-}
-
-.ca-context-menu button {
-  padding: 0.5rem 0.8rem;
-  border-radius: var(--ca-radius-md);
-  background: transparent;
-  color: var(--ca-color-fg-main);
-  text-align: left;
-  cursor: pointer;
-  transition: background var(--ca-motion-normal) var(--ca-ease-soft);
-}
-
-.ca-context-menu button:hover {
-  background: rgba(148, 163, 184, 0.15);
-}
-
-@keyframes ca-menu-fade {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* --------------------------------------------------
-   End of ca-core.css
--------------------------------------------------- */
