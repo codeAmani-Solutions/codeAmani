@@ -1,7 +1,7 @@
 /* =====================================================================
    Code Amani Design System – Core Utilities
    Requires: ca-tokens.css
-   Inspired by iOS 26 Liquid Glass Design  :contentReference[oaicite:1]{index=1}
+   Inspired by iOS 26 Liquid Glass Design
    ===================================================================== */
 
 /* --------------------------------------------------
@@ -142,7 +142,7 @@
 
 /* --------------------------------------------------
    5. Navigation (Top + Dynamic Shrinking)
-   Matches iOS 26 dynamic toolbars.  :contentReference[oaicite:2]{index=2}
+   Matches iOS 26 dynamic toolbars.
 -------------------------------------------------- */
 
 .ca-nav {
@@ -184,7 +184,7 @@
 
 /* --------------------------------------------------
    6. Bottom Navigation (iOS 26 Dynamic Tab Bar)
-   This matches: “Liquid Glass tab bars shrink to free space…”  :contentReference[oaicite:3]{index=3}
+   This matches: “Liquid Glass tab bars shrink to free space…”
 -------------------------------------------------- */
 
 .ca-bottom-nav {
@@ -307,7 +307,7 @@
 
 /* --------------------------------------------------
    9. In-Place Alerts (iOS 26 behavior) 
-   “alerts expand from the button that triggers them”  :contentReference[oaicite:4]{index=4}
+   “alerts expand from the button that triggers them”
 -------------------------------------------------- */
 
 .ca-alert {
