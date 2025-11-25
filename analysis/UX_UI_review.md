@@ -1,6 +1,3 @@
-+77
--0
-
 # Code Amani Labs – UX & UI Evaluation
 
 ## Summary
