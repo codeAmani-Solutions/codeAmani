@@ -377,11 +377,192 @@
         </p>
       </div>
       <div class="cta-buttons">
-        <a href="mailto:info@codeamani.com" class="ca-btn u-press-soft">Schedule a consultation</a>
-        <a href="mailto:info@codeamani.com" class="ca-btn ca-btn-secondary u-press-soft">Send us a message</a>
+        <button type="button" class="ca-btn u-press-soft" id="open-scheduler">Schedule a consultation</button>
+        <a href="#adaptive-contact" class="ca-btn ca-btn-secondary u-press-soft">Adaptive contact form</a>
       </div>
     </div>
   </section>
+
+  <!-- Adaptive Contact Form -->
+  <section id="adaptive-contact" class="ca-section contact-form">
+    <div class="ca-container">
+      <div class="section-header">
+        <p class="eyebrow">Shape-shifting brief</p>
+        <h2>Tell us about your team and what you’re building</h2>
+        <p>
+          A dynamic form that adapts to your context—helping you clarify your needs while showing how Code Amani Labs can
+          add value. Submissions are securely stored via Netlify forms and generate an email summary to
+          <strong>info@codeamani.com</strong>.
+        </p>
+      </div>
+      <form
+        id="consultation-form"
+        name="consultation"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="ca-card u-glass adaptive-form u-animate"
+      >
+        <input type="hidden" name="form-name" value="consultation" />
+        <p class="hidden">
+          <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+        </p>
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Full name</span>
+            <input type="text" name="name" placeholder="Your name" required />
+          </label>
+          <label class="form-field">
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label class="form-field">
+            <span>Organization</span>
+            <input type="text" name="organization" placeholder="Company or team" />
+          </label>
+          <label class="form-field">
+            <span>Role</span>
+            <input type="text" name="role" placeholder="Founder, PM, Director, etc." />
+          </label>
+          <label class="form-field">
+            <span>User type</span>
+            <select name="userType" id="user-type" required>
+              <option value="" disabled selected>Select a profile</option>
+              <option value="startup">Startup / founder-led</option>
+              <option value="enterprise">Enterprise</option>
+              <option value="government">Government / public sector</option>
+              <option value="nonprofit">Nonprofit</option>
+              <option value="individual">Individual / creator</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Project stage</span>
+            <select name="stage" id="project-stage" required>
+              <option value="" disabled selected>Where are you now?</option>
+              <option value="ideation">Idea / discovery</option>
+              <option value="prototyping">Prototype / MVP</option>
+              <option value="build">Ready to build</option>
+              <option value="scale">Scaling / optimization</option>
+              <option value="rescue">Rescue / modernization</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <fieldset class="form-field radio-group">
+            <legend>Focus areas</legend>
+            <div class="chip-group" id="focus-group">
+              <label><input type="checkbox" name="focus" value="platforms" /> Platforms &amp; SaaS</label>
+              <label><input type="checkbox" name="focus" value="web" /> Websites &amp; web apps</label>
+              <label><input type="checkbox" name="focus" value="gov" /> Government contracting</label>
+              <label><input type="checkbox" name="focus" value="identity" /> Identity &amp; verification</label>
+              <label><input type="checkbox" name="focus" value="qr" /> QR &amp; micro tools</label>
+              <label><input type="checkbox" name="focus" value="data" /> Data / security</label>
+            </div>
+          </fieldset>
+
+          <label class="form-field">
+            <span>Problem or opportunity</span>
+            <textarea
+              name="problem"
+              id="problem"
+              rows="4"
+              placeholder="Describe the challenge, goals, or outcomes you want"
+              required
+            ></textarea>
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Timeline target</span>
+            <select name="timeline" id="timeline" required>
+              <option value="" disabled selected>Select a timeline</option>
+              <option value="asap">ASAP / emergency rescue</option>
+              <option value="6-weeks">4–6 weeks</option>
+              <option value="quarter">This quarter</option>
+              <option value="six-months">Next 6 months</option>
+              <option value="ongoing">Ongoing partnership</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Budget lens</span>
+            <select name="budget" id="budget" required>
+              <option value="" disabled selected>Signal the investment level</option>
+              <option value="starter">Discovery / starter</option>
+              <option value="mvp">MVP build</option>
+              <option value="growth">Growth / scale</option>
+              <option value="enterprise">Enterprise / compliance-driven</option>
+            </select>
+          </label>
+          <label class="form-field">
+            <span>Preferred contact</span>
+            <select name="contactPreference" id="contact-preference" required>
+              <option value="" disabled selected>How should we respond?</option>
+              <option value="email">Email</option>
+              <option value="call">Call</option>
+              <option value="video">Video consultation</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-grid full-width">
+          <label class="form-field">
+            <span>Links or assets (optional)</span>
+            <input type="url" name="links" placeholder="Share URLs to docs, repos, briefs, or demos" />
+          </label>
+          <label class="form-field">
+            <span>What success looks like</span>
+            <textarea
+              name="success"
+              id="success"
+              rows="3"
+              placeholder="Define the win-state, KPIs, or user impact"
+            ></textarea>
+          </label>
+        </div>
+
+        <div class="form-dynamic" id="dynamic-guidance" aria-live="polite"></div>
+
+        <div class="form-actions">
+          <button type="submit" class="ca-btn u-press-soft">Email and submit securely</button>
+          <p class="helper-text">
+            Your submission will trigger an email draft to <strong>info@codeamani.com</strong> and store the payload via
+            Netlify forms for secure follow-up. We’ll reply with a tailored plan.
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Scheduler Modal -->
+  <div class="modal" id="scheduler-modal" role="dialog" aria-modal="true" aria-labelledby="scheduler-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content u-glass u-animate">
+      <button class="modal-close" type="button" aria-label="Close scheduler" data-close-modal>&times;</button>
+      <div class="modal-header">
+        <p class="eyebrow">Calendar</p>
+        <h3 id="scheduler-title">Book a consultation</h3>
+        <p>Select a date and time that works for you. We’ll confirm by email.</p>
+      </div>
+      <div class="scheduler-grid">
+        <div class="calendar">
+          <div class="calendar-header">
+            <button type="button" class="icon-btn" id="prev-month" aria-label="Previous month">&#8249;</button>
+            <div class="calendar-month" id="calendar-month"></div>
+            <button type="button" class="icon-btn" id="next-month" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Calendar"></div>
+        </div>
+        <div class="time-slots">
+          <h4>Available times</h4>
+          <div class="slot-list" id="slot-list"></div>
+          <div class="slot-summary" id="slot-summary">Select a date to see times.</div>
+          <button type="button" class="ca-btn u-press-soft" id="confirm-slot" disabled>Confirm consultation</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer u-glass">
@@ -408,6 +589,219 @@
       </div>
     </div>
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+      const yearTarget = document.getElementById('year');
+      if (yearTarget) {
+        yearTarget.textContent = new Date().getFullYear();
+      }
+
+      // Scheduler modal logic
+      const modal = document.getElementById('scheduler-modal');
+      const openScheduler = document.getElementById('open-scheduler');
+      const calendarGrid = document.getElementById('calendar-grid');
+      const calendarMonth = document.getElementById('calendar-month');
+      const prevMonthBtn = document.getElementById('prev-month');
+      const nextMonthBtn = document.getElementById('next-month');
+      const slotList = document.getElementById('slot-list');
+      const slotSummary = document.getElementById('slot-summary');
+      const confirmSlot = document.getElementById('confirm-slot');
+
+      let currentDate = new Date();
+      let selectedDate = null;
+      let selectedSlot = null;
+
+      const slotTemplates = ['9:00 AM', '11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM'];
+
+      const toggleModal = (open) => {
+        if (!modal) return;
+        modal.classList.toggle('is-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+
+      const buildCalendar = () => {
+        if (!calendarGrid || !calendarMonth) return;
+        calendarGrid.innerHTML = '';
+
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        calendarMonth.textContent = currentDate.toLocaleDateString('default', {
+          month: 'long',
+          year: 'numeric',
+        });
+
+        for (let i = 0; i < firstDay; i++) {
+          const filler = document.createElement('div');
+          filler.className = 'calendar-cell is-muted';
+          filler.setAttribute('aria-hidden', 'true');
+          calendarGrid.appendChild(filler);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const cell = document.createElement('button');
+          cell.type = 'button';
+          cell.className = 'calendar-cell';
+          cell.textContent = day;
+          const dateValue = new Date(year, month, day);
+          cell.setAttribute('data-date', dateValue.toISOString());
+          cell.addEventListener('click', () => {
+            document.querySelectorAll('.calendar-cell.is-selected').forEach((el) =>
+              el.classList.remove('is-selected')
+            );
+            cell.classList.add('is-selected');
+            selectedDate = dateValue;
+            populateSlots();
+          });
+          calendarGrid.appendChild(cell);
+        }
+      };
+
+      const populateSlots = () => {
+        if (!selectedDate || !slotList || !slotSummary || !confirmSlot) return;
+        slotList.innerHTML = '';
+        selectedSlot = null;
+        confirmSlot.disabled = true;
+        const readableDate = selectedDate.toLocaleDateString('default', {
+          weekday: 'short',
+          month: 'short',
+          day: 'numeric',
+        });
+        slotSummary.textContent = `Select a time on ${readableDate}.`;
+
+        slotTemplates.forEach((slot) => {
+          const slotBtn = document.createElement('button');
+          slotBtn.type = 'button';
+          slotBtn.className = 'slot';
+          slotBtn.textContent = slot;
+          slotBtn.addEventListener('click', () => {
+            document.querySelectorAll('.slot.is-selected').forEach((el) =>
+              el.classList.remove('is-selected')
+            );
+            slotBtn.classList.add('is-selected');
+            selectedSlot = slot;
+            slotSummary.textContent = `You selected ${readableDate} at ${slot}.`;
+            confirmSlot.disabled = false;
+          });
+          slotList.appendChild(slotBtn);
+        });
+      };
+
+      const confirmSelection = () => {
+        if (!selectedDate || !selectedSlot) return;
+        const readableDate = selectedDate.toLocaleDateString('default', {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric',
+        });
+        const body = encodeURIComponent(
+          `Hi Code Amani Labs,%0D%0A%0D%0AI'd like to confirm a consultation on ${readableDate} at ${selectedSlot}.%0D%0A` +
+            `Please confirm availability.%0D%0A%0D%0AThank you!`
+        );
+        window.open(`mailto:info@codeamani.com?subject=Consultation%20booking&body=${body}`);
+        toggleModal(false);
+      };
+
+      if (openScheduler) {
+        openScheduler.addEventListener('click', () => toggleModal(true));
+      }
+
+      document.querySelectorAll('[data-close-modal]').forEach((el) =>
+        el.addEventListener('click', () => toggleModal(false))
+      );
+
+      if (prevMonthBtn && nextMonthBtn) {
+        prevMonthBtn.addEventListener('click', () => {
+          currentDate.setMonth(currentDate.getMonth() - 1);
+          buildCalendar();
+        });
+        nextMonthBtn.addEventListener('click', () => {
+          currentDate.setMonth(currentDate.getMonth() + 1);
+          buildCalendar();
+        });
+      }
+
+      buildCalendar();
+
+      if (confirmSlot) {
+        confirmSlot.addEventListener('click', confirmSelection);
+      }
+
+      // Adaptive form guidance
+      const guidance = document.getElementById('dynamic-guidance');
+      const userType = document.getElementById('user-type');
+      const projectStage = document.getElementById('project-stage');
+      const timeline = document.getElementById('timeline');
+      const budget = document.getElementById('budget');
+      const problem = document.getElementById('problem');
+      const success = document.getElementById('success');
+      const form = document.getElementById('consultation-form');
+
+      const guidanceCopy = {
+        startup:
+          'You’re founder-led. Highlight traction (users, pilots), tech stack preferences, and any fundraising timelines. We will map an MVP or v1 launch path.',
+        enterprise:
+          'You need rigor. Note integrations, governance, and approval processes. We’ll plan for phased rollouts and change management.',
+        government:
+          'Public-sector focus. Share procurement stage, compliance needs (ATO, FedRAMP), and documentation requirements so we can align deliverables.',
+        nonprofit:
+          'Mission-driven. Tell us about stakeholders, grant timelines, and accessibility needs so we can maximize reach and value.',
+        individual:
+          'Creator or solo builder. Describe your audience, launch goals, and where you need the most help—design, build, or growth.',
+      };
+
+      const updateGuidance = () => {
+        if (!guidance) return;
+        const type = userType?.value;
+        const stage = projectStage?.value;
+        const time = timeline?.value;
+        const spend = budget?.value;
+        const problemValue = problem?.value?.trim();
+        const successValue = success?.value?.trim();
+
+        const stageCopy = stage
+          ? `Stage: <strong>${stage.replace('-', ' ')}</strong>.`
+          : 'Stage: share where you are—idea, MVP, or scaling.';
+        const timeCopy = time
+          ? `Timeline: <strong>${time.replace('-', ' ')}</strong>.`
+          : 'Timeline: note launch urgency or key dates.';
+        const budgetCopy = spend
+          ? `Budget lens: <strong>${spend}</strong>.`
+          : 'Budget: signal the investment band so we can right-size scope.';
+
+        const typeCopy = type ? guidanceCopy[type] : 'Select a user type to tailor the brief.';
+        const problemCopy = problemValue
+          ? `You want to solve: <strong>${problemValue}</strong>.`
+          : 'Describe the problem or opportunity so we can align on outcomes.';
+        const successCopy = successValue
+          ? `Success looks like: <strong>${successValue}</strong>.`
+          : 'Defining success helps us measure impact and prioritize features.';
+
+        guidance.innerHTML = `${typeCopy}<br>${stageCopy} ${timeCopy} ${budgetCopy}<br>${problemCopy}<br>${successCopy}`;
+      };
+
+      [userType, projectStage, timeline, budget, problem, success]
+        .filter(Boolean)
+        .forEach((field) => field.addEventListener('input', updateGuidance));
+
+      updateGuidance();
+
+      // Netlify + email handoff
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const data = new FormData(form);
+          const entries = Array.from(data.entries())
+            .filter(([key]) => key !== 'bot-field')
+            .map(([key, value]) => `${key}: ${value}`)
+            .join('%0D%0A');
+          const subject = encodeURIComponent('Consultation request via adaptive form');
+          const body = encodeURIComponent('Details:%0D%0A' + entries);
+          window.open(`mailto:info@codeamani.com?subject=${subject}&body=${body}`);
+          form.submit();
+        });
+      }
     </script>
   </footer>
+</body>
+</html>
