@@ -41,20 +41,21 @@
           </a>
           
           <!-- Graphic Text Logo (Right) -->
-          <!-- Height INCREASED-->
+          <!-- Height set to h-20 to match shield -->
           <a href="#hero-main" 
              onclick="showSection('main-content')"
              class="block hover:opacity-90 transition duration-300 shrink-0">
               <img
                   src="assets/codeamani-labs-text-logo.png"
                   alt="codeAmani"
-                  class="h-22 w-auto object-contain"
+                  class="h-20 w-auto object-contain"
               />
           </a>
       </div>
 
-      <!-- Existing Nav Links (Preserved structure with Tailwind classes) -->
-      <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-300">
+      <!-- Navigation Menu with Pill Container Style -->
+      <!-- Wrapped items in a glass pill container -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300 px-8 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-lg transition-all hover:border-white/20 hover:bg-white/10">
         <li><a href="#what-we-do" class="hover:text-white transition">What we do</a></li>
         <li><a href="#solutions-overview" class="hover:text-white transition">Solutions</a></li>
         <li><a href="#products-platforms" class="hover:text-white transition">Products</a></li>
