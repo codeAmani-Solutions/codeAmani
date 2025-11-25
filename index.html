@@ -2,182 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>codeAmani Labs </title>
+  <title>Code Amani Labs LLC – SaaS & Digital Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
     content="Code Amani Labs LLC is an online SaaS and digital solutions company providing platforms, websites, government contracting solutions, digital tools, QR utilities, identity workflows, rental application suites, and secure data handling."
   />
-  
-  <!-- Favicon (Browser Tab Icon) -->
-  <link rel="icon" href="assets/codeamani-labs-shield-logo.png" type="image/png" />
-
-  <!-- Design System CSS (Linked to 'design/' folder) -->
   <link rel="stylesheet" href="design/ca-tokens.css" />
   <link rel="stylesheet" href="design/ca-core.css" />
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Tailwind CSS (Required for layout utilities) -->
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<!-- Step 2: Update Body Class -->
-<body class="ca-app antialiased selection:bg-brand-500/30 selection:text-white" data-brand="code-amani">
-
-  <!-- Step 3: Converted Header to ca-nav -->
-  <header class="ca-nav">
-    <nav class="ca-nav-inner flex justify-between items-center">
-      
-      <!-- Logo Snippet Updated -->
-      <div class="flex items-center gap-4 ca-nav-logo h-full">
-          <!-- Large Shield Logo (Left) -->
-          <!-- Height set to h-20 (approx 80px) -->
-          <a href="#hero-main" onclick="showSection('main-content')" class="block hover:scale-105 transition-transform duration-300 shrink-0">
-              <img
-                  src="assets/codeamani-labs-shield-logo.png"
-                  alt="Code Amani Shield"
-                  class="h-20 w-auto object-contain drop-shadow-lg"
-              />
-          </a>
-          
-          <!-- Graphic Text Logo (Right) -->
-          <!-- Height set to h-20 to match shield -->
-          <a href="#hero-main" 
-             onclick="showSection('main-content')"
-             class="block hover:opacity-90 transition duration-300 shrink-0">
-              <img
-                  src="assets/codeamani-labs-text-logo.png"
-                  alt="codeAmani"
-                  class="h-20 w-auto object-contain"
-              />
-          </a>
+<body class="ca-app">
+  <!-- Header / Navigation -->
+  <header class="ca-nav u-glass u-animate">
+    <div class="ca-nav-inner ca-container">
+      <div class="ca-brand">
+        <div class="brand-mark">
+          <img src="assets/codeamani-labs-logo.png" alt="Code Amani Labs logo" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Code Amani Labs</span>
+          <span class="brand-tagline">Liquid Glass Interfaces · iOS 26</span>
+        </div>
       </div>
-
-      <!-- Navigation Menu with Individual Pill Styles -->
-      <!-- Removed wrapper style from UL, applied to A tags instead -->
-      <ul class="hidden md:flex items-center gap-3 text-sm font-medium text-gray-300">
-        <li>
-            <a href="#what-we-do" class="block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20 hover:text-white shadow-sm">
-                What we do
-            </a>
-        </li>
-        <li>
-            <a href="#solutions-overview" class="block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20 hover:text-white shadow-sm">
-                Solutions
-            </a>
-        </li>
-        <li>
-            <a href="#products-platforms" class="block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20 hover:text-white shadow-sm">
-                Products
-            </a>
-        </li>
-        <li>
-            <a href="#selected-projects" class="block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20 hover:text-white shadow-sm">
-                Projects
-            </a>
-        </li>
-        <li>
-            <a href="#contact-cta" class="block px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/20 hover:text-white shadow-sm">
-                Contact
-            </a>
-        </li>
-      </ul>
-
-      <!-- Mobile Menu Button (Placeholder) -->
-      <button class="md:hidden text-white p-2">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
-    </nav>
+      <nav class="ca-menu">
+        <ul>
+          <li><a href="#what-we-do">What we do</a></li>
+          <li><a href="#solutions-overview">Solutions</a></li>
+          <li><a href="#products-platforms">Products</a></li>
+          <li><a href="#selected-projects">Projects</a></li>
+          <li><a href="#security-compliance">Security</a></li>
+          <li><a class="cta" href="#contact-cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section id="hero-main" class="section hero min-h-screen flex items-center justify-center pt-20 pb-16">
-    <!-- Step 4: Updated Hero Container with Glass Classes -->
-    <div class="max-w-5xl z-10 space-y-8 reveal-on-scroll u-glass u-animate-soft u-hover-float p-8 sm:p-12 mx-4">
-      <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
-        Powerful SaaS &amp; digital solutions, built around your workflows.
-      </h1>
-      <p class="text-lg text-gray-300 max-w-2xl">
-        Code Amani Labs LLC is an online SaaS and digital solutions company. We design, build, and manage flexible
-        technology—from custom platforms and websites to government-ready tools, QR-based utilities, identity
-        verification flows, and secure data systems.
-      </p>
-      
-      <div class="flex flex-wrap gap-4 pt-4">
-        <!-- Updated Buttons to ca-btn -->
-        <a href="#contact-cta" class="ca-btn">
-          Get a project consultation
-        </a>
-        <a href="#solutions-overview" 
-           class="ca-btn-secondary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-medium transition hover:scale-105">
-           Explore our solutions
-        </a>
+  <!-- HERO -->
+  <section id="hero-main" class="ca-section hero">
+    <div class="ca-container hero-grid">
+      <div class="hero-copy u-animate u-hover-float u-glass">
+        <div class="hero-pill ca-pill">Liquid Glass Experience · iOS 26</div>
+        <h1>Powerful SaaS &amp; digital solutions, tuned to your workflows.</h1>
+        <p>
+          Code Amani Labs LLC designs, builds, and manages flexible technology—from custom platforms and websites to
+          government-ready tools, QR-based utilities, identity verification flows, and secure data systems.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact-cta" class="ca-btn u-press-soft">Get a project consultation</a>
+          <a href="#solutions-overview" class="ca-btn ca-btn-secondary u-press-soft">Explore our solutions</a>
+        </div>
+        <div class="hero-meta">
+          <span class="ca-pill">SaaS platforms &amp; web applications</span>
+          <span class="ca-pill">Government contracting–ready</span>
+          <span class="ca-pill">Secure data processing</span>
+        </div>
       </div>
-
-      <ul class="flex flex-wrap gap-3 pt-2">
-        <li class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 backdrop-blur-md">SaaS platforms &amp; web applications</li>
-        <li class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 backdrop-blur-md">Government contracting–ready</li>
-        <li class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 backdrop-blur-md">Secure data processing</li>
-      </ul>
+      <div class="hero-card ca-card u-hover-float u-animate">
+        <div class="card-heading">
+          <p class="eyebrow">What's new in iOS 26 styling</p>
+          <h3>Fluid gradients, glass surfaces, and motion-aware interactions.</h3>
+        </div>
+        <ul class="card-list">
+          <li>Responsive Liquid Glass surfaces with accent sheen</li>
+          <li>Soft blur halos, dynamic nav resizing, and pill-based menus</li>
+          <li>Motion curves aligned to iOS 26 micro-interactions</li>
+        </ul>
+        <a class="ca-btn ca-btn-secondary u-press-soft" href="assets/All_New_Features_iOS_26_Sept_2025.pdf">Review the design brief</a>
+      </div>
     </div>
   </section>
 
   <!-- WHAT WE DO -->
-  <section id="what-we-do" class="section services py-20">
+  <section id="what-we-do" class="ca-section services">
     <div class="ca-container">
-      <h2 class="text-3xl font-bold text-white mb-4">What we build and support</h2>
-      <p class="text-gray-400 max-w-2xl mb-12">
-        Code Amani Labs works across multiple layers of your digital stack. Whether you need a complete platform, a
-        focused tool, or a secure way to handle data, we assemble the right mix of services for your goals.
-      </p>
-      
-      <!-- Grid using ca-card -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white mb-2">SaaS Platforms</h3>
-          <p class="text-sm leading-relaxed">
+      <div class="section-header">
+        <p class="eyebrow">What we build</p>
+        <h2>Glassmorphic building blocks for modern platforms</h2>
+        <p>
+          Code Amani Labs works across multiple layers of your digital stack. Whether you need a complete platform, a
+          focused tool, or a secure way to handle data, we assemble the right mix of services for your goals.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>SaaS Platforms</h3>
+          <p>
             Cloud-based platforms tailored to your operations. We design, build, and maintain applications that power
             internal workflows, customer experiences, and industry-specific use cases.
           </p>
         </article>
 
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white mb-2">Website &amp; Web App Development</h3>
-          <p class="text-sm leading-relaxed">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Website &amp; Web App Development</h3>
+          <p>
             Modern, responsive websites and web applications—from marketing sites to interactive portals—designed
             for clarity, performance, and long-term maintainability.
           </p>
         </article>
 
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white mb-2">Government Contracting Solutions</h3>
-          <p class="text-sm leading-relaxed">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Government Contracting Solutions</h3>
+          <p>
             Digital tools, portals, and platforms that can be delivered under government contracts. We focus on
             reliability, documentation, and workflows suitable for public-sector environments.
           </p>
         </article>
 
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white mb-2">Digital Tools &amp; QR Utilities</h3>
-          <p class="text-sm leading-relaxed">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Digital Tools &amp; QR Utilities</h3>
+          <p>
             Focused digital solutions such as QR-based experiences, intake tools, micro-apps, and integrations that
             plug into your existing systems and workflows.
           </p>
         </article>
 
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white mb-2">Identity Verification Workflows</h3>
-          <p class="text-sm leading-relaxed">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Identity Verification Workflows</h3>
+          <p>
             Identity checks as part of larger digital solutions: document capture, validation steps, and audit-friendly
             logging where verification is required.
           </p>
         </article>
 
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white mb-2">Rental Application Suites</h3>
-          <p class="text-sm leading-relaxed">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Rental Application Suites</h3>
+          <p>
             End-to-end digital experiences for rental and application processing, including online forms, tracking
-            flows, and secure handling of supporting documents.
+            flows, and secure handling of supporting documents—offered as one of many solution patterns we implement.
+          </p>
+        </article>
+
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Data Processing &amp; Secure Storage</h3>
+          <p>
+            Responsible handling of digital information. We design workflows, storage strategies, and access controls
+            that help keep your data organized, secure, and compliant.
           </p>
         </article>
       </div>
@@ -185,139 +144,275 @@
   </section>
 
   <!-- HOW WE WORK -->
-  <section id="how-we-work" class="section process py-20">
+  <section id="how-we-work" class="ca-section process">
     <div class="ca-container">
-      <h2 class="text-3xl font-bold text-white mb-4">How we work with you</h2>
-      <p class="text-gray-400 mb-12">
-        Every engagement is different, but our process stays consistent: understand, design, build, and support.
-      </p>
-      <ol class="grid md:grid-cols-2 gap-6">
-        <li class="ca-card">
-          <h3 class="text-lg font-bold text-white mb-2">Discover &amp; Define</h3>
-          <p class="text-sm">We listen first—mapping your goals, constraints, and existing systems.</p>
+      <div class="section-header">
+        <p class="eyebrow">How we partner</p>
+        <h2>Consistent, transparent delivery across every engagement</h2>
+        <p>
+          Every engagement is different, but our process stays consistent: understand, design, build, and support.
+        </p>
+      </div>
+      <ol class="process-steps">
+        <li class="ca-card u-animate u-hover-float">
+          <h3>Discover &amp; Define</h3>
+          <p>
+            We listen first—mapping your goals, constraints, and existing systems. Together, we define the outcomes
+            that matter and the scope of the solution.
+          </p>
         </li>
-        <li class="ca-card">
-          <h3 class="text-lg font-bold text-white mb-2">Design &amp; Architecture</h3>
-          <p class="text-sm">We design user journeys, data flows, and technical architecture that fit your organization.</p>
+        <li class="ca-card u-animate u-hover-float">
+          <h3>Design &amp; Architecture</h3>
+          <p>
+            We design user journeys, data flows, and technical architecture that fit your organization instead of
+            forcing you into a one-size-fits-all tool.
+          </p>
         </li>
-        <li class="ca-card">
-          <h3 class="text-lg font-bold text-white mb-2">Build, Integrate &amp; Launch</h3>
-          <p class="text-sm">We develop your platform, integrate it with your stack, and guide you through launch.</p>
+        <li class="ca-card u-animate u-hover-float">
+          <h3>Build, Integrate &amp; Launch</h3>
+          <p>
+            We develop your platform, website, or digital tool; integrate it with your existing stack; and guide you
+            through testing and launch.
+          </p>
         </li>
-        <li class="ca-card">
-          <h3 class="text-lg font-bold text-white mb-2">Maintain, Improve &amp; Support</h3>
-          <p class="text-sm">After launch, we stay involved—monitoring performance and keeping systems current.</p>
+        <li class="ca-card u-animate u-hover-float">
+          <h3>Maintain, Improve &amp; Support</h3>
+          <p>
+            After launch, we stay involved—monitoring performance, refining features, and keeping your systems
+            current as your needs evolve.
+          </p>
         </li>
       </ol>
     </div>
   </section>
 
   <!-- SOLUTIONS OVERVIEW -->
-  <section id="solutions-overview" class="section solutions py-20">
+  <section id="solutions-overview" class="ca-section solutions">
     <div class="ca-container">
-      <h2 class="text-3xl font-bold text-white mb-4">Solutions tailored to your context</h2>
-      <div class="grid md:grid-cols-2 gap-6 mt-10">
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white">For Growing Businesses</h3>
-          <p class="text-sm mt-2">Streamlined websites, customer portals, and SaaS tools that centralize your operations.</p>
+      <div class="section-header">
+        <p class="eyebrow">Solutions</p>
+        <h2>Tailored experiences for every team</h2>
+        <p>
+          Code Amani Labs supports organizations at different stages and in different sectors. Here are a few ways we
+          put our tools to work.
+        </p>
+      </div>
+      <div class="feature-grid two-col">
+        <article class="ca-card u-hover-float u-animate">
+          <div class="card-meta">Business Growth</div>
+          <h3>For Growing Businesses</h3>
+          <p>
+            Streamlined websites, customer portals, and SaaS tools that centralize your operations and reduce the
+            manual work hidden in spreadsheets and email threads.
+          </p>
         </article>
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white">For Digital-First Teams</h3>
-          <p class="text-sm mt-2">Custom platforms, APIs, and integrations that unify data and automate workflows.</p>
+
+        <article class="ca-card u-hover-float u-animate">
+          <div class="card-meta">Digital Operators</div>
+          <h3>For Digital-First Teams</h3>
+          <p>
+            Custom platforms, APIs, and integrations that unify data, automate workflows, and create a smoother
+            experience for both users and internal teams.
+          </p>
         </article>
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white">For Public &amp; Government Projects</h3>
-          <p class="text-sm mt-2">Structured solutions suitable for government contracting—forms, portals, and dashboards.</p>
+
+        <article class="ca-card u-hover-float u-animate">
+          <div class="card-meta">Public Sector</div>
+          <h3>For Public &amp; Government Projects</h3>
+          <p>
+            Structured, documented solutions suitable for government contracting—such as forms, portals, reporting
+            dashboards, and secure data workflows.
+          </p>
         </article>
-        <article class="ca-card u-hover-float">
-          <h3 class="text-xl font-semibold text-white">For Specialized Workflows</h3>
-          <p class="text-sm mt-2">Rental application flows, identity verification steps, and digitized processes.</p>
+
+        <article class="ca-card u-hover-float u-animate">
+          <div class="card-meta">Specialized Flows</div>
+          <h3>For Specialized Workflows</h3>
+          <p>
+            Rental application flows, identity verification steps, or other operational processes that need to be
+            digitized responsibly and securely.
+          </p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- PRODUCTS & PLATFORMS -->
-  <section id="products-platforms" class="section products py-20">
+  <section id="products-platforms" class="ca-section products">
     <div class="ca-container">
-      <h2 class="text-3xl font-bold text-white mb-4">Platforms and products</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-10">
-        <article class="ca-card">
-          <h3 class="text-lg font-bold text-white">Code Amani Rental Suite</h3>
-          <p class="text-sm mt-2">Configurable digital experience for managing rental or application workflows.</p>
+      <div class="section-header">
+        <p class="eyebrow">Products</p>
+        <h2>Platforms powered by Code Amani Labs</h2>
+        <p>
+          In addition to client projects, Code Amani Labs designs and maintains standalone platforms and digital products.
+        </p>
+      </div>
+      <div class="feature-grid">
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Code Amani Rental Suite</h3>
+          <p>
+            A configurable digital experience for managing rental or application workflows, built as part of our broader
+            SaaS solutions portfolio.
+          </p>
         </article>
-        <article class="ca-card">
-          <h3 class="text-lg font-bold text-white">Apex Waiver</h3>
-          <p class="text-sm mt-2">Dedicated waiver management platform built and maintained by Code Amani Labs.</p>
+
+        <article class="ca-card u-hover-float u-animate">
+          <h3>Apex Waiver</h3>
+          <p>
+            A dedicated waiver management platform built and maintained by Code Amani Labs as a standalone product and
+            brand. Apex Waiver operates on its own website, while Code Amani provides the underlying technology,
+            enhancements, and support.
+          </p>
         </article>
-        <article class="ca-card">
-          <h3 class="text-lg font-bold text-white">QR &amp; Micro-Tools</h3>
-          <p class="text-sm mt-2">Focused digital tools—QR experiences, intake forms, and micro-apps.</p>
+
+        <article class="ca-card u-hover-float u-animate">
+          <h3>QR &amp; Micro-Tools Library</h3>
+          <p>
+            A collection of focused digital tools—such as QR-based experiences, intake forms, and micro-apps—that can be
+            deployed as standalone utilities or integrated into larger platforms.
+          </p>
+        </article>
+      </div>
+      <div class="section-cta">
+        <a href="#contact-cta" class="ca-btn u-press-soft">View product portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED PROJECTS -->
+  <section id="selected-projects" class="ca-section projects">
+    <div class="ca-container">
+      <div class="section-header">
+        <p class="eyebrow">Projects</p>
+        <h2>Selected work</h2>
+        <p>
+          Here are a few examples of how Code Amani Labs applies SaaS, web development, and digital tools to real-world
+          workflows. Each project is tailored to the organization’s needs while drawing on reusable patterns from our
+          broader solutions.
+        </p>
+      </div>
+
+      <div class="feature-grid three-col">
+        <article class="ca-card u-hover-float u-animate">
+          <p class="card-meta">Platform</p>
+          <h3>Apex Waiver</h3>
+          <p class="project-subtitle">Standalone waiver management platform</p>
+          <p>
+            A dedicated waiver management platform built and maintained by Code Amani Labs as a standalone product and
+            brand. Apex Waiver operates on its own website, while Code Amani provides the underlying technology,
+            enhancements, and ongoing support.
+          </p>
+        </article>
+
+        <article class="ca-card u-hover-float u-animate">
+          <p class="card-meta">SaaS Pattern</p>
+          <h3>Code Amani Rental Suite</h3>
+          <p class="project-subtitle">Configurable application and intake workflows</p>
+          <p>
+            A configurable digital experience for managing rental or application workflows. Code Amani Labs designed and
+            implemented online forms, status flows, and secure document handling as one of several solution patterns in our
+            broader SaaS portfolio.
+          </p>
+        </article>
+
+        <article class="ca-card u-hover-float u-animate">
+          <p class="card-meta">Micro Tools</p>
+          <h3>QR &amp; Micro-Tools Collection</h3>
+          <p class="project-subtitle">Focused digital utilities</p>
+          <p>
+            A set of lightweight digital tools—including QR-based experiences, intake forms, and micro-apps—designed to
+            plug into existing systems. These utilities help teams digitize specific steps without rebuilding their entire
+            stack.
+          </p>
+        </article>
+
+        <article class="ca-card u-hover-float u-animate">
+          <p class="card-meta">Public Sector</p>
+          <h3>Public-Sector Workflow Prototype</h3>
+          <p class="project-subtitle">Government-ready digital forms and reporting</p>
+          <p>
+            A prototype engagement focused on structured forms, review workflows, and reporting dashboards suitable for
+            government or public-sector use, with attention to documentation, traceability, and secure data handling.
+          </p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT / FORM SECTION -->
-  <section id="contact-cta" class="section contact-cta py-20">
-    <div class="ca-container max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-white mb-6">Ready to talk about your next digital project?</h2>
-      <p class="text-gray-400 mb-10">
-        Whether you’re planning a new platform, refining an existing website, or preparing for a government proposal, Code Amani Labs can help.
-      </p>
-      
-      <!-- Step 5: Contact Form with ca-input -->
-      <div class="u-glass p-8 text-left space-y-6">
-        <form action="#" method="POST" class="space-y-5">
-            <div>
-                <label class="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
-                <input type="text" name="Email"
-                       class="ca-input w-full text-base"
-                       placeholder="Your Professional Email" required>
-            </div>
-            
-            <div>
-                <label class="block text-sm font-medium text-gray-400 mb-1">Project Details</label>
-                <textarea name="Project_Scope"
-                          class="ca-input w-full text-base"
-                          rows="3"
-                          placeholder="Your Vision and Project Scope" required></textarea>
-            </div>
-
-            <div class="pt-2">
-                <button type="submit" class="ca-btn w-full md:w-auto">
-                    Send Message
-                </button>
-            </div>
-        </form>
+  <!-- SECURITY & COMPLIANCE -->
+  <section id="security-compliance" class="ca-section security">
+    <div class="ca-container">
+      <div class="section-header">
+        <p class="eyebrow">Security &amp; data</p>
+        <h2>Security and data handling you can trust</h2>
+        <p>
+          We treat data as a long-term responsibility, not a by-product of building software. Code Amani Labs designs
+          systems with security, privacy, and clarity in mind.
+        </p>
       </div>
+      <div class="security-grid">
+        <div class="ca-card u-hover-float u-animate">
+          <h3>Data flows &amp; access control</h3>
+          <p>Thoughtful data flows, scoped permissions, and visibility tailored to each role.</p>
+        </div>
+        <div class="ca-card u-hover-float u-animate">
+          <h3>Encryption &amp; secure storage</h3>
+          <p>Pattern libraries for encryption, storage policies, and resilient hosting setups.</p>
+        </div>
+        <div class="ca-card u-hover-float u-animate">
+          <h3>Compliance alignment</h3>
+          <p>Documented handling, retention practices, and data processing agreements as needed.</p>
+        </div>
+      </div>
+      <p class="security-note">
+        We can align our solutions with your organization’s compliance requirements and documentation standards.
+      </p>
+    </div>
+  </section>
 
+  <!-- CONTACT CTA -->
+  <section id="contact-cta" class="ca-section contact-cta">
+    <div class="ca-container">
+      <div class="section-header">
+        <p class="eyebrow">Let’s build</p>
+        <h2>Ready to talk about your next digital project?</h2>
+        <p>
+          Whether you’re planning a new platform, refining an existing website, preparing for a government proposal, or
+          exploring a focused digital tool, Code Amani Labs can help you shape it and bring it to life.
+        </p>
+      </div>
+      <div class="cta-buttons">
+        <a href="mailto:info@codeamani.com" class="ca-btn u-press-soft">Schedule a consultation</a>
+        <a href="mailto:info@codeamani.com" class="ca-btn ca-btn-secondary u-press-soft">Send us a message</a>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer py-10 border-t border-white/10 bg-black/20 backdrop-blur-md">
-    <div class="ca-container flex flex-col md:flex-row justify-between items-start gap-8">
-      <div class="max-w-md">
-        <h3 class="text-white font-bold mb-2">About Code Amani Labs LLC</h3>
-        <p class="text-sm text-gray-400">
+  <footer class="site-footer u-glass">
+    <div class="ca-container footer-inner">
+      <div class="footer-about">
+        <h3>About Code Amani Labs LLC</h3>
+        <p>
           Code Amani Labs is an online SaaS and digital solutions company. We build and support a wide range of
-          technology—including SaaS platforms, websites, government contracting solutions, and secure data processing systems.
+          technology—including SaaS platforms, websites, government contracting solutions, digital tools (like QR
+          utilities), identity verification workflows, rental application suites, and secure data processing systems.
         </p>
       </div>
-      <div class="text-sm text-gray-400">
+      <div class="footer-links">
+        <ul>
+          <li><a href="#what-we-do">What we do</a></li>
+          <li><a href="#products-platforms">Products</a></li>
+          <li><a href="#selected-projects">Projects</a></li>
+          <li><a href="#security-compliance">Security</a></li>
+          <li><a href="#contact-cta">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-meta">
         <p>&copy; <span id="year"></span> Code Amani Labs LLC. All rights reserved.</p>
       </div>
     </div>
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
-      
-      // Simple placeholder function for the requested onclick in header
-      function showSection(id) {
-          console.log("Navigating to:", id);
-          // Implementation logic for SPA navigation would go here
-      }
     </script>
   </footer>
-</body>
-</html>
