@@ -213,29 +213,44 @@ a:hover {
 .ca-brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-.brand-mark img {
-  width: 44px;
-  height: 44px;
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.brand-link:focus-visible {
+  outline: 2px solid var(--ca-color-accent-1);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.brand-link:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.28));
+}
+
+.brand-img {
   display: block;
+  height: 64px;
+  width: auto;
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+.brand-img--wordmark {
+  height: 56px;
 }
 
-.brand-title {
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
+@media (max-width: 640px) {
+  .brand-img {
+    height: 52px;
+  }
 
-.brand-tagline {
-  color: var(--ca-color-fg-muted);
-  font-size: var(--ca-font-size-label);
+  .brand-img--wordmark {
+    height: 46px;
+  }
 }
 
 .ca-menu ul {
@@ -424,8 +439,7 @@ a:hover {
 
 @media (min-width: 900px) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-    align-items: stretch;
+    grid-template-columns: 1fr;
   }
 
   .hero-copy h1 {
